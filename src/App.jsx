@@ -2,31 +2,128 @@ import { useEffect, useMemo, useState } from "react";
 import "./App.css";
 
 const WHATSAPP_NUMBER = "919894349627";
+
 const INSTAGRAM_URL =
   "https://www.instagram.com/shri_inbaas_bakery?stkn=bHNpYnhnYjd0Z3dr";
+
 const EMAIL = "Shriinbaas@gmail.com";
 
 const products = [
-  { name: "Black Forest", price: 700, category: "Chocolate", image: "/images/Blackforest.jpg" },
-  { name: "White Forest", price: 700, category: "Classic", image: "/images/Whiteforest.jpg" },
-  { name: "Red Velvet", price: 1000, category: "Special", image: "/images/RedVelvet.jpg" },
-  { name: "Butterscotch", price: 850, category: "Classic", image: "/images/ButterScotch.jpg" },
-  { name: "Strawberry", price: 800, category: "Fruit", image: "/images/Strawberry.jpg" },
-  { name: "Mango", price: 800, category: "Fruit", image: "/images/Mango.jpg" },
-  { name: "Blueberry", price: 750, category: "Fruit", image: "/images/Blueberry.jpg" },
-  { name: "Pineapple", price: 750, category: "Fruit", image: "/images/Pineapple.jpg" },
-  { name: "Choco Truffle", price: 900, category: "Chocolate", image: "/images/Chacotruffel.jpg" },
-  { name: "Chocolate Ice Cake", price: 750, category: "Chocolate", image: "/images/Chocolateicecake.jpg" },
-  { name: "Choco Scotch", price: 800, category: "Chocolate", image: "/images/ChacoScotch.jpg" },
-  { name: "Vanilla", price: 600, category: "Classic", image: "/images/Venila.jpg" },
-  { name: "2-in-1", price: 850, category: "Special", image: "/images/2 in one.jpg" },
-  { name: "Rasmalai", price: 950, category: "Special", image: "/images/Rasamalai.jpg" },
-  { name: "3-in-1", price: 900, category: "Special", image: "/images/3 in one.jpg" },
-  { name: "Rasmalai Scotch", price: 1000, category: "Special", image: "/images/Rasamalaiscotch.jpg" },
-  { name: "Choco Oreo", price: 950, category: "Chocolate", image: "/images/Chocooreo.jpg" },
+  {
+    name: "Black Forest",
+    price: 700,
+    category: "Chocolate",
+    image: "/images/Blackforest.jpg",
+  },
+  {
+    name: "White Forest",
+    price: 700,
+    category: "Classic",
+    image: "/images/Whiteforest.jpg",
+  },
+  {
+    name: "Red Velvet",
+    price: 1000,
+    category: "Special",
+    image: "/images/RedVelvet.jpg",
+  },
+  {
+    name: "Butterscotch",
+    price: 850,
+    category: "Classic",
+    image: "/images/ButterScotch.jpg",
+  },
+  {
+    name: "Strawberry",
+    price: 800,
+    category: "Fruit",
+    image: "/images/Strawberry.jpg",
+  },
+  {
+    name: "Mango",
+    price: 800,
+    category: "Fruit",
+    image: "/images/Mango.jpg",
+  },
+  {
+    name: "Blueberry",
+    price: 750,
+    category: "Fruit",
+    image: "/images/Blueberry.jpg",
+  },
+  {
+    name: "Pineapple",
+    price: 750,
+    category: "Fruit",
+    image: "/images/Pineapple.jpg",
+  },
+  {
+    name: "Choco Truffle",
+    price: 900,
+    category: "Chocolate",
+    image: "/images/Chacotruffel.jpg",
+  },
+  {
+    name: "Chocolate Ice Cake",
+    price: 750,
+    category: "Chocolate",
+    image: "/images/Chocolateicecake.jpg",
+  },
+  {
+    name: "Choco Scotch",
+    price: 800,
+    category: "Chocolate",
+    image: "/images/ChacoScotch.jpg",
+  },
+  {
+    name: "Vanilla",
+    price: 600,
+    category: "Classic",
+    image: "/images/Venila.jpg",
+  },
+  {
+    name: "2-in-1",
+    price: 850,
+    category: "Special",
+    image: "/images/2 in one.jpg",
+  },
+  {
+    name: "Rasmalai",
+    price: 950,
+    category: "Special",
+    image: "/images/Rasamalai.jpg",
+  },
+  {
+    name: "3-in-1",
+    price: 900,
+    category: "Special",
+    image: "/images/3 in one.jpg",
+  },
+  {
+    name: "Rasmalai Scotch",
+    price: 1000,
+    category: "Special",
+    image: "/images/Rasamalaiscotch.jpg",
+  },
+  {
+    name: "Choco Oreo",
+    price: 950,
+    category: "Chocolate",
+    image: "/images/Chocooreo.jpg",
+  },
 ];
 
-const categories = ["All", "Chocolate", "Classic", "Fruit", "Special"];
+const categories = [
+  "All",
+  "Chocolate",
+  "Classic",
+  "Fruit",
+  "Special",
+];
+
+/* =========================================================
+   ICONS
+========================================================= */
 
 function InstagramIcon({ size = 28 }) {
   return (
@@ -47,6 +144,7 @@ function InstagramIcon({ size = 28 }) {
         stroke="currentColor"
         strokeWidth="1.8"
       />
+
       <circle
         cx="12"
         cy="12"
@@ -54,7 +152,13 @@ function InstagramIcon({ size = 28 }) {
         stroke="currentColor"
         strokeWidth="1.8"
       />
-      <circle cx="17.4" cy="6.7" r="1.15" fill="currentColor" />
+
+      <circle
+        cx="17.4"
+        cy="6.7"
+        r="1.15"
+        fill="currentColor"
+      />
     </svg>
   );
 }
@@ -69,7 +173,12 @@ function WhatsAppIcon({ size = 32 }) {
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
     >
-      <circle cx="16" cy="16" r="16" fill="#25D366" />
+      <circle
+        cx="16"
+        cy="16"
+        r="16"
+        fill="#25D366"
+      />
 
       <path
         d="M16 6.2C10.59 6.2 6.2 10.59 6.2 16c0 1.73.45 3.35 1.24 4.76L6.2 25.8l5.18-1.22A9.75 9.75 0 0 0 16 25.8c5.41 0 9.8-4.39 9.8-9.8S21.41 6.2 16 6.2Z"
@@ -86,7 +195,12 @@ function WhatsAppIcon({ size = 32 }) {
 
 function MailIcon() {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+    <svg
+      width="22"
+      height="22"
+      viewBox="0 0 24 24"
+      fill="none"
+    >
       <rect
         x="3"
         y="5"
@@ -96,6 +210,7 @@ function MailIcon() {
         stroke="currentColor"
         strokeWidth="1.8"
       />
+
       <path
         d="M4 7l8 6 8-6"
         stroke="currentColor"
@@ -109,20 +224,37 @@ function MailIcon() {
 
 function LocationIcon() {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+    <svg
+      width="22"
+      height="22"
+      viewBox="0 0 24 24"
+      fill="none"
+    >
       <path
         d="M12 21s7-6.1 7-12a7 7 0 1 0-14 0c0 5.9 7 12 7 12Z"
         stroke="currentColor"
         strokeWidth="1.8"
       />
-      <circle cx="12" cy="9" r="2.3" stroke="currentColor" strokeWidth="1.8" />
+
+      <circle
+        cx="12"
+        cy="9"
+        r="2.3"
+        stroke="currentColor"
+        strokeWidth="1.8"
+      />
     </svg>
   );
 }
 
 function PhoneIcon() {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+    <svg
+      width="22"
+      height="22"
+      viewBox="0 0 24 24"
+      fill="none"
+    >
       <path
         d="M6.8 3.8l2.3-.7c.7-.2 1.4.2 1.7.9l1 2.5c.2.5.1 1-.3 1.4L10 9.5c1 2.1 2.4 3.6 4.5 4.5l1.6-1.5c.4-.4 1-.5 1.4-.3l2.5 1c.7.3 1.1 1 .9 1.7l-.7 2.3c-.2.7-.8 1.1-1.5 1.1C10.5 18.3 5.7 13.5 5.7 7.3c0-.7.4-1.3 1.1-1.5Z"
         stroke="currentColor"
@@ -134,30 +266,28 @@ function PhoneIcon() {
   );
 }
 
-/**
- * CertificateIcon
- * ----------------
- * Renders the REAL FSSAI / FOSCOS logo image from /public/images/.
- * Drop your actual logo files in as:
- *   public/images/fssai-logo.png
- *   public/images/foscos-logo.png
- * (crop them from your certificate PDFs, or use the official files
- * FSSAI/FOSCOS gave you — trademarked government marks shouldn't be
- * recreated from scratch, so use the real ones you already have).
- *
- * If an image is missing or fails to load, it falls back to the
- * original ✓ / ▣ badge so the card never looks broken.
- */
+/* =========================================================
+   CERTIFICATE ICON
+========================================================= */
+
 function CertificateIcon({ type }) {
   const [imgFailed, setImgFailed] = useState(false);
 
   const src =
-    type === "fssai" ? "/images/fssai-logo.jpg" : "/images/foscos-logo.jpg";
-  const alt = type === "fssai" ? "FSSAI logo" : "FOSCOS logo";
+    type === "fssai"
+      ? "/images/fssai-logo.jpg"
+      : "/images/foscos-logo.jpg";
+
+  const alt =
+    type === "fssai"
+      ? "FSSAI logo"
+      : "FOSCOS logo";
 
   if (imgFailed) {
     return (
-      <div className={`certificate-icon ${type} icon-fallback`}>
+      <div
+        className={`certificate-icon ${type} icon-fallback`}
+      >
         {type === "fssai" ? "✓" : "▣"}
       </div>
     );
@@ -174,12 +304,30 @@ function CertificateIcon({ type }) {
   );
 }
 
+/* =========================================================
+   APP
+========================================================= */
+
 function App() {
-  const [activeCategory, setActiveCategory] = useState("All");
+  const [activeCategory, setActiveCategory] =
+    useState("All");
+
   const [search, setSearch] = useState("");
+
   const [cart, setCart] = useState([]);
-  const [cartOpen, setCartOpen] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+
+  const [cartOpen, setCartOpen] =
+    useState(false);
+
+  const [menuOpen, setMenuOpen] =
+    useState(false);
+
+  const [candleBlown, setCandleBlown] =
+    useState(false);
+
+  /* =======================================================
+     WHATSAPP
+  ======================================================= */
 
   const openWhatsApp = (message) => {
     const text =
@@ -193,64 +341,101 @@ function App() {
     window.open(url, "_blank");
   };
 
+  /* =======================================================
+     FILTER PRODUCTS
+  ======================================================= */
+
   const filteredProducts = useMemo(() => {
     return products.filter((product) => {
       const categoryMatch =
-        activeCategory === "All" || product.category === activeCategory;
+        activeCategory === "All" ||
+        product.category === activeCategory;
 
-      const searchMatch = product.name
-        .toLowerCase()
-        .includes(search.toLowerCase());
+      const searchMatch =
+        product.name
+          .toLowerCase()
+          .includes(search.toLowerCase());
 
-      return categoryMatch && searchMatch;
+      return (
+        categoryMatch &&
+        searchMatch
+      );
     });
   }, [activeCategory, search]);
 
+  /* =======================================================
+     CART
+  ======================================================= */
 
-// Add to cart  code
+  const addToCart = (product) => {
+    setCart((current) => {
+      const existing = current.find(
+        (item) => item.name === product.name
+      );
 
+      if (existing) {
+        return current.map((item) =>
+          item.name === product.name
+            ? {
+                ...item,
+                quantity:
+                  item.quantity + 1,
+              }
+            : item
+        );
+      }
 
-  // const addToCart = (product) => {
-  //   setCart((current) => {
-  //     const existing = current.find((item) => item.name === product.name);
+      return [
+        ...current,
+        {
+          ...product,
+          quantity: 1,
+        },
+      ];
+    });
 
-  //     if (existing) {
-  //       return current.map((item) =>
-  //         item.name === product.name
-  //           ? { ...item, quantity: item.quantity + 1 }
-  //           : item
-  //       );
-  //     }
+    setCartOpen(true);
+  };
 
-  //     return [...current, { ...product, quantity: 1 }];
-  //   });
-
-  //   setCartOpen(true);
-  // };
-
-  const updateQuantity = (name, change) => {
+  const updateQuantity = (
+    name,
+    change
+  ) => {
     setCart((current) =>
       current
         .map((item) =>
           item.name === name
-            ? { ...item, quantity: item.quantity + change }
+            ? {
+                ...item,
+                quantity:
+                  item.quantity + change,
+              }
             : item
         )
-        .filter((item) => item.quantity > 0)
+        .filter(
+          (item) => item.quantity > 0
+        )
     );
   };
 
   const removeFromCart = (name) => {
-    setCart((current) => current.filter((item) => item.name !== name));
+    setCart((current) =>
+      current.filter(
+        (item) => item.name !== name
+      )
+    );
   };
 
   const cartTotal = cart.reduce(
-    (total, item) => total + item.price * item.quantity,
+    (total, item) =>
+      total +
+      item.price * item.quantity,
     0
   );
 
   const cartCount = cart.reduce(
-    (total, item) => total + item.quantity,
+    (total, item) =>
+      total + item.quantity,
     0
   );
 
@@ -261,66 +446,319 @@ function App() {
       .map(
         (item) =>
           `${item.name} x ${item.quantity} - ₹${
-            item.price * item.quantity
+            item.price *
+            item.quantity
           }`
       )
       .join("\n");
 
     openWhatsApp(
-      `Hello SHRI INBAAS SWEETS AND BAKERY,\n\nI would like to order:\n\n${items}\n\nTotal: ₹${cartTotal}\n\nPlease confirm availability.`
+      `Hello SHRI INBAAS SWEETS AND BAKERY,
+
+I would like to order:
+
+${items}
+
+Total: ₹${cartTotal}
+
+Please confirm availability.`
     );
   };
 
+  /* =======================================================
+     SCROLL
+  ======================================================= */
+
   const scrollTo = (id) => {
-    document.getElementById(id)?.scrollIntoView({
+    const element =
+      document.getElementById(id);
+
+    if (!element) return;
+
+    const navbarHeight = 75;
+
+    const top =
+      element.getBoundingClientRect()
+        .top +
+      window.scrollY -
+      navbarHeight;
+
+    window.scrollTo({
+      top,
       behavior: "smooth",
     });
 
     setMenuOpen(false);
   };
 
+  /* =======================================================
+     CANDLE
+  ======================================================= */
+
+  const toggleCandle = () => {
+    setCandleBlown(
+      (current) => !current
+    );
+  };
+
+  /* =======================================================
+     CART BODY LOCK
+  ======================================================= */
+
   useEffect(() => {
-    document.body.style.overflow = cartOpen ? "hidden" : "";
+    document.body.style.overflow =
+      cartOpen ? "hidden" : "";
 
     return () => {
-      document.body.style.overflow = "";
+      document.body.style.overflow =
+        "";
     };
   }, [cartOpen]);
+
+  /* =======================================================
+     CINEMATIC SCROLL REVEAL
+  ======================================================= */
+
+  useEffect(() => {
+    const elements =
+      document.querySelectorAll(
+        ".reveal"
+      );
+
+    if (!elements.length) return;
+
+    const observer =
+      new IntersectionObserver(
+        (entries) => {
+          entries.forEach(
+            (entry) => {
+              if (
+                entry.isIntersecting
+              ) {
+                entry.target.classList.add(
+                  "is-visible"
+                );
+              } else {
+                entry.target.classList.remove(
+                  "is-visible"
+                );
+              }
+            }
+          );
+        },
+        {
+          threshold: 0.12,
+          rootMargin:
+            "0px 0px -8% 0px",
+        }
+      );
+
+    elements.forEach((element) =>
+      observer.observe(element)
+    );
+
+    return () =>
+      observer.disconnect();
+  }, [filteredProducts]);
+
+  /* =======================================================
+     PARALLAX / SCROLL PROGRESS
+  ======================================================= */
+
+  useEffect(() => {
+    let ticking = false;
+
+    const handleScroll = () => {
+      if (ticking) return;
+
+      ticking = true;
+
+      requestAnimationFrame(() => {
+        const scrollY =
+          window.scrollY;
+
+        const hero =
+          document.querySelector(
+            ".hero"
+          );
+
+        const heroVisual =
+          document.querySelector(
+            ".hero-visual"
+          );
+
+        const storyVideo =
+          document.querySelector(
+            ".story-image video"
+          );
+
+        const heroContent =
+          document.querySelector(
+            ".hero-content"
+          );
+
+        if (
+          hero &&
+          heroVisual &&
+          heroContent
+        ) {
+          const heroHeight =
+            hero.offsetHeight;
+
+          const progress = Math.min(
+            scrollY /
+              (heroHeight * 0.9),
+            1
+          );
+
+          heroVisual.style.setProperty(
+            "--hero-parallax",
+            `${progress * 55}px`
+          );
+
+          heroVisual.style.setProperty(
+            "--hero-scale",
+            `${1 + progress * 0.07}`
+          );
+
+          heroContent.style.setProperty(
+            "--hero-text-y",
+            `${progress * -35}px`
+          );
+
+          heroContent.style.setProperty(
+            "--hero-opacity",
+            `${1 - progress * 0.75}`
+          );
+        }
+
+        if (storyVideo) {
+          const rect =
+            storyVideo.parentElement.getBoundingClientRect();
+
+          const viewportCenter =
+            window.innerHeight / 2;
+
+          const distance =
+            (rect.top +
+              rect.height / 2 -
+              viewportCenter) /
+            window.innerHeight;
+
+          const movement =
+            Math.max(
+              -35,
+              Math.min(35, distance * -35)
+            );
+
+          storyVideo.style.transform =
+            `scale(1.08) translateY(${movement}px)`;
+        }
+
+        ticking = false;
+      });
+    };
+
+    window.addEventListener(
+      "scroll",
+      handleScroll,
+      {
+        passive: true,
+      }
+    );
+
+    handleScroll();
+
+    return () =>
+      window.removeEventListener(
+        "scroll",
+        handleScroll
+      );
+  }, []);
 
   return (
     <div className="app">
 
-      {/* NAVBAR */}
+      {/* ==================================================
+          NAVBAR
+      ================================================== */}
+
       <header className="navbar">
         <div className="nav-inner">
+
           <button
             className="brand"
-            onClick={() => scrollTo("home")}
+            onClick={() =>
+              scrollTo("home")
+            }
           >
-            <span className="brand-small">EST. 2025</span>
+            <span className="brand-small">
+              EST. 2025
+            </span>
+
             <span className="brand-name">
               SHRI INBAAS
             </span>
+
             <span className="brand-sub">
               SWEETS & BAKERY
             </span>
           </button>
 
-          <nav className={menuOpen ? "nav-links open" : "nav-links"}>
-            <button onClick={() => scrollTo("home")}>Home</button>
-            <button onClick={() => scrollTo("cakes")}>Cakes</button>
-            <button onClick={() => scrollTo("story")}>Our Story</button>
-            <button onClick={() => scrollTo("certifications")}>
+          <nav
+            className={
+              menuOpen
+                ? "nav-links open"
+                : "nav-links"
+            }
+          >
+            <button
+              onClick={() =>
+                scrollTo("home")
+              }
+            >
+              Home
+            </button>
+
+            <button
+              onClick={() =>
+                scrollTo("cakes")
+              }
+            >
+              Cakes
+            </button>
+
+            <button
+              onClick={() =>
+                scrollTo("story")
+              }
+            >
+              Our Story
+            </button>
+
+            <button
+              onClick={() =>
+                scrollTo(
+                  "certifications"
+                )
+              }
+            >
               Certifications
             </button>
-            <button onClick={() => scrollTo("contact")}>Contact</button>
+
+            <button
+              onClick={() =>
+                scrollTo("contact")
+              }
+            >
+              Contact
+            </button>
 
             <a
               className="nav-instagram mobile-instagram"
               href={INSTAGRAM_URL}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Visit our Instagram"
             >
               <InstagramIcon size={20} />
               Instagram
@@ -328,274 +766,460 @@ function App() {
           </nav>
 
           <div className="nav-actions">
-            {/* INSTAGRAM */}
+
             <a
               className="instagram-button"
               href={INSTAGRAM_URL}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Visit SHRI INBAAS Bakery Instagram"
-              title="Follow us on Instagram"
+              aria-label="Visit Instagram"
             >
               <InstagramIcon size={23} />
             </a>
 
-        {/* nabebar bag code  */}
-
-
-            {/* CART */}
-            {/* <button
+            <button
               className="cart-button"
-              onClick={() => setCartOpen(true)}
+              onClick={() =>
+                setCartOpen(true)
+              }
               aria-label="Open cart"
             >
-              {/* <span>Bag</span> */}
-              {/* {cartCount > 0 && (
-                <b>{cartCount}</b>
-              )} */}
-            {/* </button> */} 
+              <span>
+                Bag
+              </span>
 
+              {cartCount > 0 && (
+                <b>
+                  {cartCount}
+                </b>
+              )}
+            </button>
 
             <button
-              className="menu-button"
-              onClick={() => setMenuOpen(!menuOpen)}
+              className={`menu-button ${
+                menuOpen
+                  ? "open"
+                  : ""
+              }`}
+              onClick={() =>
+                setMenuOpen(
+                  !menuOpen
+                )
+              }
+              aria-label={
+                menuOpen
+                  ? "Close menu"
+                  : "Open menu"
+              }
+              aria-expanded={
+                menuOpen
+              }
             >
               <span></span>
               <span></span>
               <span></span>
             </button>
+
           </div>
         </div>
       </header>
 
-      {/* HERO */}
       <main>
-      
-  <section className="hero" id="home">
-  <div className="hero-content">
-    <p className="section-label">
-      ARTISAN BAKERY • KAMUTHI
-    </p>
 
-    <h1>
-      Baked with
-      <span>heart.</span>
-    </h1>
+        {/* ==================================================
+            HERO
+        ================================================== */}
 
-    <p className="hero-description">
-      Freshly crafted cakes, sweets and celebration
-      treats made with care for every special moment.
-    </p>
+        <section
+          className="hero"
+          id="home"
+        >
+          <div className="hero-background"></div>
 
-    <div className="hero-buttons">
-      <button
-        className="primary-button"
-        onClick={() => scrollTo("cakes")}
-      >
-        Explore Cakes
-        <span>↗</span>
-      </button>
+          <div className="hero-content">
 
-      <button
-        className="secondary-button"
-        onClick={() => openWhatsApp()}
-      >
-        Order on WhatsApp
-      </button>
-    </div>
-
-    <div className="hero-social">
-      <span>Follow our bakery</span>
-
-      <a
-        href={INSTAGRAM_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <InstagramIcon size={18} />
-        @shri_inbaas_bakery
-      </a>
-    </div>
-  </div>
-
-  <div className="hero-visual">
-    <div className="bakery-display">
-
-      <div className="cake-glow"></div>
-
-      <div className="cake-animation">
-        <div className="cake-top">
-          <span className="cherry"></span>
-          <span className="cherry"></span>
-          <span className="cherry"></span>
-        </div>
-
-        <div className="cake-cream"></div>
-
-        <div className="cake-body">
-          <span className="cream-drip drip-1"></span>
-          <span className="cream-drip drip-2"></span>
-          <span className="cream-drip drip-3"></span>
-        </div>
-
-        <div className="cake-bottom"></div>
-      </div>
-
-      <div className="cake-plate"></div>
-
-      <div className="floating-word word-one">
-        FRESH
-      </div>
-
-      <div className="floating-word word-two">
-        SWEET
-      </div>
-
-    </div>
-  </div>
-</section>
-
-        {/* INTRO */}
-        <section className="intro-section">
-          <div className="intro-container">
-            <p className="section-label">THE SHRI INBAAS WAY</p>
-
-            <h2>
-              Sweet moments,
-              <br />
-              <em>made memorable.</em>
-            </h2>
-
-            <p>
-              From classic favourites to rich celebration cakes,
-              every creation is prepared to bring something special
-              to your table.
+            <p className="section-label hero-label reveal">
+              ARTISAN BAKERY • KAMUTHI
             </p>
+
+            <h1 className="hero-title reveal reveal-delay-1">
+              Baked with
+              <span>
+                heart.
+              </span>
+            </h1>
+
+            <p className="hero-description reveal reveal-delay-2">
+              Freshly crafted cakes,
+              sweets and celebration
+              treats made with care
+              for every special moment.
+            </p>
+
+            <div className="hero-buttons reveal reveal-delay-3">
+
+              <button
+                className="primary-button"
+                onClick={() =>
+                  scrollTo("cakes")
+                }
+              >
+                Explore Cakes
+                <span>↗</span>
+              </button>
+
+              <button
+                className="secondary-button"
+                onClick={() =>
+                  openWhatsApp()
+                }
+              >
+                Order on WhatsApp
+              </button>
+
+            </div>
+
+            <div className="hero-social reveal reveal-delay-4">
+              <span>
+                Follow our bakery
+              </span>
+
+              <a
+                href={INSTAGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <InstagramIcon size={18} />
+                @shri_inbaas_bakery
+              </a>
+            </div>
+
+          </div>
+
+          <div className="hero-visual">
+
+            <div className="bakery-display">
+
+              <div className="cake-glow"></div>
+
+              <div className="cake-animation">
+
+                <div className="cake-top">
+
+                  <span className="cherry"></span>
+                  <span className="cherry"></span>
+                  <span className="cherry"></span>
+
+                  <button
+                    className={`candle ${
+                      candleBlown
+                        ? "blown"
+                        : ""
+                    }`}
+                    onClick={
+                      toggleCandle
+                    }
+                    aria-label={
+                      candleBlown
+                        ? "Relight candle"
+                        : "Blow out candle"
+                    }
+                  >
+                    <span className="candle-stick"></span>
+                    <span className="flame"></span>
+                    <span className="smoke"></span>
+                  </button>
+
+                </div>
+
+                <div className="cake-cream"></div>
+
+                <div className="cake-body">
+
+                  <span className="cream-drip drip-1"></span>
+                  <span className="cream-drip drip-2"></span>
+                  <span className="cream-drip drip-3"></span>
+
+                </div>
+
+                <div className="cake-bottom"></div>
+
+              </div>
+
+              <div className="cake-plate"></div>
+
+              <div className="floating-word word-one">
+                FRESH
+              </div>
+
+              <div className="floating-word word-two">
+                SWEET
+              </div>
+
+            </div>
+          </div>
+
+          <div className="scroll-indicator">
+            <span>SCROLL</span>
+            <i></i>
           </div>
         </section>
 
-        {/* CAKES */}
-        <section className="menu-section" id="cakes">
+        {/* ==================================================
+            INTRO
+        ================================================== */}
+
+        <section className="intro-section">
+
+          <div className="intro-container">
+
+            <p className="section-label reveal">
+              THE SHRI INBAAS WAY
+            </p>
+
+            <h2 className="reveal reveal-delay-1">
+              Sweet moments,
+              <br />
+              <em>
+                made memorable.
+              </em>
+            </h2>
+
+            <p className="reveal reveal-delay-2">
+              From classic favourites
+              to rich celebration cakes,
+              every creation is prepared
+              to bring something special
+              to your table.
+            </p>
+
+          </div>
+
+        </section>
+
+        {/* ==================================================
+            CAKES
+        ================================================== */}
+
+        <section
+          className="menu-section"
+          id="cakes"
+        >
           <div className="section-container">
+
             <div className="section-heading">
+
               <div>
-                <p className="section-label">OUR COLLECTION</p>
-                <h2>
+                <p className="section-label reveal">
+                  OUR COLLECTION
+                </p>
+
+                <h2 className="reveal reveal-delay-1">
                   Cakes for
                   <br />
-                  <em>every occasion.</em>
+                  <em>
+                    every occasion.
+                  </em>
                 </h2>
               </div>
 
-              <div className="menu-search">
+              <div className="menu-search reveal reveal-delay-2">
                 <input
                   type="text"
                   placeholder="Search cakes..."
                   value={search}
-                  onChange={(e) => setSearch(e.target.value)}
+                  onChange={(e) =>
+                    setSearch(
+                      e.target.value
+                    )
+                  }
                 />
               </div>
+
             </div>
 
-            <div className="category-tabs">
-              {categories.map((category) => (
-                <button
-                  key={category}
-                  className={
-                    activeCategory === category
-                      ? "active"
-                      : ""
-                  }
-                  onClick={() =>
-                    setActiveCategory(category)
-                  }
-                >
-                  {category}
-                </button>
-              ))}
+            <div className="category-tabs reveal">
+              {categories.map(
+                (category) => (
+                  <button
+                    key={category}
+                    className={
+                      activeCategory ===
+                      category
+                        ? "active"
+                        : ""
+                    }
+                    onClick={() =>
+                      setActiveCategory(
+                        category
+                      )
+                    }
+                  >
+                    {category}
+                  </button>
+                )
+              )}
             </div>
 
             <div className="product-grid">
-              {filteredProducts.map((product) => (
-                <article
-                  className="product-card"
-                  key={product.name}
-                >
-                  <div className="product-image">
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                    />
 
-                    <span className="product-category">
-                      {product.category}
-                    </span>
-                  </div>
+              {filteredProducts.map(
+                (product, index) => (
+                  <article
+                    className="product-card reveal"
+                    style={{
+                      "--delay": `${
+                        (index % 4) *
+                        80
+                      }ms`,
+                    }}
+                    key={product.name}
+                  >
+                    <div className="product-image">
 
-                  <div className="product-info">
-                    <div>
-                      <h3>{product.name}</h3>
-                      <p>1 KG</p>
+                      <img
+                        src={
+                          product.image
+                        }
+                        alt={
+                          product.name
+                        }
+                        loading="lazy"
+                      />
+
+                      <span className="product-category">
+                        {
+                          product.category
+                        }
+                      </span>
+
+                      <div className="product-image-shade"></div>
+
                     </div>
 
-                    <strong>₹{product.price}</strong>
-                  </div>
+                    <div className="product-info">
 
-                  {/* <button
-                    className="add-button"
-                    onClick={() => addToCart(product)}
-                  >
-                    Add to Order
-                    <span>+</span>
-                  </button> */}
-                </article>
-              ))}
+                      <div>
+                        <h3>
+                          {
+                            product.name
+                          }
+                        </h3>
+
+                        <p>
+                          1 KG
+                        </p>
+                      </div>
+
+                      <strong>
+                        ₹
+                        {
+                          product.price
+                        }
+                      </strong>
+
+                    </div>
+
+                    <button
+                      className="add-button"
+                      onClick={() =>
+                        addToCart(
+                          product
+                        )
+                      }
+                    >
+                      Add to Order
+                      <span>
+                        +
+                      </span>
+                    </button>
+
+                  </article>
+                )
+              )}
+
             </div>
+
+            {filteredProducts.length ===
+              0 && (
+              <div className="no-products">
+                No cakes found.
+              </div>
+            )}
+
           </div>
         </section>
 
-        {/* SPECIALITY */}
+        {/* ==================================================
+            SPECIALITY
+        ================================================== */}
+
         <section className="signature-section">
+
           <div className="signature-copy">
-            <p className="section-label">
+
+            <p className="section-label reveal">
               OUR SPECIALITY
             </p>
 
-            <h2>
+            <h2 className="reveal reveal-delay-1">
               Crafted for
               <br />
-              <em>your celebrations.</em>
+              <em>
+                your celebrations.
+              </em>
             </h2>
 
-            <p>
-              Whether it is a birthday, wedding, anniversary,
-              family gathering or simply a sweet craving,
-              we create cakes that make the moment feel special.
+            <p className="reveal reveal-delay-2">
+              Whether it is a birthday,
+              wedding, anniversary,
+              family gathering or simply
+              a sweet craving, we create
+              cakes that make the moment
+              feel special.
             </p>
 
             <button
-              className="gold-button"
-              onClick={() => scrollTo("contact")}
+              className="gold-button reveal reveal-delay-3"
+              onClick={() =>
+                scrollTo("contact")
+              }
             >
               Talk to us
-              <span>→</span>
+              <span>
+                →
+              </span>
             </button>
+
           </div>
 
           <div className="signature-art">
+
             <div className="gold-ring"></div>
+
             <div className="art-cake">
               <div></div>
               <div></div>
               <div></div>
             </div>
+
           </div>
+
         </section>
 
-        {/* STORY */}
-        <section className="story-section" id="story">
+        {/* ==================================================
+            STORY
+        ================================================== */}
+
+        <section
+          className="story-section"
+          id="story"
+        >
+
           <div className="story-container">
-            <div className="story-image">
+
+            <div className="story-image reveal">
+
               <video
                 autoPlay
                 muted
@@ -611,337 +1235,523 @@ function App() {
               <div className="story-image-overlay">
                 SHRI INBAAS
               </div>
+
+              <div className="story-image-number">
+                01
+              </div>
+
             </div>
 
             <div className="story-copy">
-              <p className="section-label">
+
+              <p className="section-label reveal">
                 OUR STORY
               </p>
 
-              <h2>
+              <h2 className="reveal reveal-delay-1">
                 A local bakery
                 <br />
-                <em>with a big heart.</em>
+                <em>
+                  with a big heart.
+                </em>
               </h2>
 
-              <p>
-                At SHRI INBAAS SWEETS & BAKERY, we believe
-                great food brings people together.
+              <p className="reveal reveal-delay-2">
+                At SHRI INBAAS
+                SWEETS & BAKERY,
+                we believe great food
+                brings people together.
               </p>
 
-              <p>
-                Our focus is simple — fresh products,
-                beautiful presentation and a warm experience
-                for every customer.
+              <p className="reveal reveal-delay-3">
+                Our focus is simple —
+                fresh products, beautiful
+                presentation and a warm
+                experience for every
+                customer.
               </p>
 
               <button
-                className="text-button"
-                onClick={() => scrollTo("contact")}
+                className="text-button reveal reveal-delay-4"
+                onClick={() =>
+                  scrollTo("contact")
+                }
               >
                 Visit us
-                <span>→</span>
+                <span>
+                  →
+                </span>
               </button>
+
             </div>
+
           </div>
+
         </section>
 
-        {/* CERTIFICATIONS - SMALL MOVABLE MARQUEE */}
+        {/* ==================================================
+            CERTIFICATIONS
+        ================================================== */}
+
         <section
           className="certifications-section"
           id="certifications"
         >
+
           <div className="section-container">
+
             <div className="certificate-heading">
+
               <div>
-                <p className="section-label">
+                <p className="section-label reveal">
                   TRUST & QUALITY
                 </p>
 
-                <h2>
+                <h2 className="reveal reveal-delay-1">
                   Certified for
                   <br />
-                  <em>your confidence.</em>
+                  <em>
+                    your confidence.
+                  </em>
                 </h2>
               </div>
 
-              <p className="certificate-intro">
-                Our licensing information is displayed
-                transparently for our customers.
+              <p className="certificate-intro reveal reveal-delay-2">
+                Our licensing information
+                is displayed transparently
+                for our customers.
               </p>
+
             </div>
 
-            {/* MOVING CERTIFICATE MARQUEE */}
             <div className="certificate-marquee">
+
               <div className="certificate-track">
 
-                {/* CARD 1 */}
-                <div className="certificate-card compact-card">
-                  <CertificateIcon type="fssai" />
+                <div className="certificate-card">
+
+                  <CertificateIcon
+                    type="fssai"
+                  />
 
                   <div className="certificate-content">
+
                     <span className="certificate-label">
                       FSSAI STATE LICENSE
                     </span>
 
                     <h3>
-                      SHRI INBAAS SWEETS AND BAKERY
+                      SHRI INBAAS SWEETS
+                      AND BAKERY
                     </h3>
 
                     <p>
                       FSSAI License No:
-                      <strong> 12425017000216</strong>
+                      <strong>
+                        {" "}
+                        12425017000216
+                      </strong>
                     </p>
 
                     <div className="certificate-details">
+
                       <div>
-                        <span>Issued</span>
-                        <strong>27 Nov 2025</strong>
+                        <span>
+                          Issued
+                        </span>
+
+                        <strong>
+                          27 Nov 2025
+                        </strong>
                       </div>
 
                       <div>
-                        <span>Valid Until</span>
-                        <strong>26 Nov 2026</strong>
+                        <span>
+                          Valid Until
+                        </span>
+
+                        <strong>
+                          26 Nov 2026
+                        </strong>
                       </div>
 
                       <div>
-                        <span>Type</span>
-                        <strong>State License</strong>
+                        <span>
+                          Type
+                        </span>
+
+                        <strong>
+                          State License
+                        </strong>
                       </div>
+
                     </div>
+
                   </div>
                 </div>
 
-                {/* CARD 2 */}
-                <div className="certificate-card compact-card">
-                  <CertificateIcon type="foscos" />
+                <div className="certificate-card">
+
+                  <CertificateIcon
+                    type="foscos"
+                  />
 
                   <div className="certificate-content">
+
                     <span className="certificate-label">
                       FOSCOS LICENSE RECEIPT
                     </span>
 
                     <h3>
-                      Official Registration Record
+                      Official Registration
+                      Record
                     </h3>
 
                     <p>
                       Reference No:
-                      <strong> 20251127107994117</strong>
+                      <strong>
+                        {" "}
+                        20251127107994117
+                      </strong>
                     </p>
 
                     <div className="certificate-details">
+
                       <div>
-                        <span>License Type</span>
-                        <strong>State License</strong>
+                        <span>
+                          License Type
+                        </span>
+
+                        <strong>
+                          State License
+                        </strong>
                       </div>
 
                       <div>
-                        <span>Fee Paid</span>
-                        <strong>₹2,000</strong>
+                        <span>
+                          Fee Paid
+                        </span>
+
+                        <strong>
+                          ₹2,000
+                        </strong>
                       </div>
 
                       <div>
-                        <span>Status</span>
-                        <strong>Registered</strong>
+                        <span>
+                          Status
+                        </span>
+
+                        <strong>
+                          Registered
+                        </strong>
                       </div>
+
                     </div>
+
                   </div>
                 </div>
 
-                {/* DUPLICATES FOR CONTINUOUS MARQUEE */}
-                <div className="certificate-card compact-card">
-                  <CertificateIcon type="fssai" />
+                {/* DUPLICATES */}
+
+                <div className="certificate-card">
+
+                  <CertificateIcon
+                    type="fssai"
+                  />
 
                   <div className="certificate-content">
+
                     <span className="certificate-label">
                       FSSAI STATE LICENSE
                     </span>
 
                     <h3>
-                      SHRI INBAAS SWEETS AND BAKERY
+                      SHRI INBAAS SWEETS
+                      AND BAKERY
                     </h3>
 
                     <p>
                       FSSAI License No:
-                      <strong> 12425017000216</strong>
+                      <strong>
+                        {" "}
+                        12425017000216
+                      </strong>
                     </p>
 
                     <div className="certificate-details">
+
                       <div>
-                        <span>Issued</span>
-                        <strong>27 Nov 2025</strong>
+                        <span>
+                          Issued
+                        </span>
+
+                        <strong>
+                          27 Nov 2025
+                        </strong>
                       </div>
 
                       <div>
-                        <span>Valid Until</span>
-                        <strong>26 Nov 2026</strong>
+                        <span>
+                          Valid Until
+                        </span>
+
+                        <strong>
+                          26 Nov 2026
+                        </strong>
                       </div>
 
                       <div>
-                        <span>Type</span>
-                        <strong>State License</strong>
+                        <span>
+                          Type
+                        </span>
+
+                        <strong>
+                          State License
+                        </strong>
                       </div>
+
                     </div>
+
                   </div>
                 </div>
 
-                <div className="certificate-card compact-card">
-                  <CertificateIcon type="foscos" />
+                <div className="certificate-card">
+
+                  <CertificateIcon
+                    type="foscos"
+                  />
 
                   <div className="certificate-content">
+
                     <span className="certificate-label">
                       FOSCOS LICENSE RECEIPT
                     </span>
 
                     <h3>
-                      Official Registration Record
+                      Official Registration
+                      Record
                     </h3>
 
                     <p>
                       Reference No:
-                      <strong> 20251127107994117</strong>
+                      <strong>
+                        {" "}
+                        20251127107994117
+                      </strong>
                     </p>
 
                     <div className="certificate-details">
+
                       <div>
-                        <span>License Type</span>
-                        <strong>State License</strong>
+                        <span>
+                          License Type
+                        </span>
+
+                        <strong>
+                          State License
+                        </strong>
                       </div>
 
                       <div>
-                        <span>Fee Paid</span>
-                        <strong>₹2,000</strong>
+                        <span>
+                          Fee Paid
+                        </span>
+
+                        <strong>
+                          ₹2,000
+                        </strong>
                       </div>
 
                       <div>
-                        <span>Status</span>
-                        <strong>Registered</strong>
+                        <span>
+                          Status
+                        </span>
+
+                        <strong>
+                          Registered
+                        </strong>
                       </div>
+
                     </div>
+
                   </div>
                 </div>
 
               </div>
+
             </div>
+
           </div>
+
         </section>
 
-        {/* ORDER CTA */}
+        {/* ==================================================
+            ORDER CTA
+        ================================================== */}
+
         <section className="order-section">
+
           <div>
-            <p className="section-label">
+
+            <p className="section-label reveal">
               READY TO ORDER?
             </p>
 
-            <h2>
+            <h2 className="reveal reveal-delay-1">
               Let's make
               <br />
-              <em>something sweet.</em>
+              <em>
+                something sweet.
+              </em>
             </h2>
 
-            <p>
-              Tell us what you are looking for and we
-              will help you with your order.
+            <p className="reveal reveal-delay-2">
+              Tell us what you are looking
+              for and we will help you
+              with your order.
             </p>
+
           </div>
 
           <button
-            className="order-whatsapp-button"
-            onClick={() => openWhatsApp()}
+            className="order-whatsapp-button reveal reveal-delay-3"
+            onClick={() =>
+              openWhatsApp()
+            }
           >
             <WhatsAppIcon size={28} />
+
             <span>
-              <small>QUICK ORDER</small>
+              <small>
+                QUICK ORDER
+              </small>
+
               WhatsApp Us
             </span>
           </button>
+
         </section>
 
-        {/* CONTACT */}
-        <section className="contact-section" id="contact">
+        {/* ==================================================
+            CONTACT
+        ================================================== */}
+
+        <section
+          className="contact-section"
+          id="contact"
+        >
+
           <div className="contact-container">
 
             <div className="contact-intro">
-              <p className="section-label">
+
+              <p className="section-label reveal">
                 COME SAY HELLO
               </p>
 
-              <h2>
+              <h2 className="reveal reveal-delay-1">
                 We'd love
-                <span>to hear from you.</span>
+                <span>
+                  to hear from you.
+                </span>
               </h2>
 
-              <p>
-                Visit our bakery or contact us directly
-                for orders, enquiries and celebrations.
+              <p className="reveal reveal-delay-2">
+                Visit our bakery or contact
+                us directly for orders,
+                enquiries and celebrations.
               </p>
 
               <button
-                className="contact-whatsapp-btn"
-                onClick={() => openWhatsApp()}
+                className="contact-whatsapp-btn reveal reveal-delay-3"
+                onClick={() =>
+                  openWhatsApp()
+                }
               >
                 <WhatsAppIcon size={24} />
                 Chat on WhatsApp
               </button>
+
             </div>
 
             <div className="contact-card">
 
-              <div className="contact-item">
+              <div className="contact-item reveal">
+
                 <div className="contact-item-icon">
                   <LocationIcon />
                 </div>
 
                 <div>
-                  <span>VISIT US</span>
+                  <span>
+                    VISIT US
+                  </span>
 
-                  <h3>Our Bakery</h3>
+                  <h3>
+                    Our Bakery
+                  </h3>
 
                   <p>
-                    No.264/40B1, Soodiyoor Road,
+                    No.264/40B1,
+                    Soodiyoor Road,
                     <br />
                     Abiramam Bus Stand,
                     <br />
-                    Kamuthi, Ramanathapuram,
+                    Kamuthi,
+                    Ramanathapuram,
                     <br />
                     Tamil Nadu – 623601
                   </p>
                 </div>
+
               </div>
 
               <div className="contact-divider"></div>
 
-              <div className="contact-item">
+              <div className="contact-item reveal">
+
                 <div className="contact-item-icon">
                   <PhoneIcon />
                 </div>
 
                 <div>
-                  <span>CALL / WHATSAPP</span>
+                  <span>
+                    CALL / WHATSAPP
+                  </span>
 
-                  <h3>+91 98943 49627</h3>
+                  <h3>
+                    +91 98943 49627
+                  </h3>
 
                   <button
                     className="contact-link-button"
-                    onClick={() => openWhatsApp()}
+                    onClick={() =>
+                      openWhatsApp()
+                    }
                   >
                     Start a conversation →
                   </button>
                 </div>
+
               </div>
 
               <div className="contact-divider"></div>
 
-              <div className="contact-item">
+              <div className="contact-item reveal">
+
                 <div className="contact-item-icon">
                   <MailIcon />
                 </div>
 
                 <div>
-                  <span>EMAIL</span>
+                  <span>
+                    EMAIL
+                  </span>
 
-                  <h3>{EMAIL}</h3>
+                  <h3>
+                    {EMAIL}
+                  </h3>
 
                   <a
                     className="contact-link-button"
@@ -950,20 +1760,25 @@ function App() {
                     Send us an email →
                   </a>
                 </div>
+
               </div>
 
               <div className="contact-divider"></div>
 
-              {/* INSTAGRAM CONTACT */}
-              <div className="contact-item">
+              <div className="contact-item reveal">
+
                 <div className="contact-item-icon instagram-contact-icon">
                   <InstagramIcon size={23} />
                 </div>
 
                 <div>
-                  <span>FOLLOW US</span>
+                  <span>
+                    FOLLOW US
+                  </span>
 
-                  <h3>@shri_inbaas_bakery</h3>
+                  <h3>
+                    @shri_inbaas_bakery
+                  </h3>
 
                   <a
                     className="contact-link-button"
@@ -974,21 +1789,35 @@ function App() {
                     Visit our Instagram →
                   </a>
                 </div>
+
               </div>
 
             </div>
+
           </div>
+
         </section>
+
       </main>
 
-      {/* FOOTER */}
+      {/* ==================================================
+          FOOTER
+      ================================================== */}
+
       <footer className="footer">
+
         <div className="footer-brand">
-          <strong>SHRI INBAAS</strong>
-          <span>SWEETS & BAKERY</span>
+          <strong>
+            SHRI INBAAS
+          </strong>
+
+          <span>
+            SWEETS & BAKERY
+          </span>
         </div>
 
         <div className="footer-social">
+
           <a
             href={INSTAGRAM_URL}
             target="_blank"
@@ -999,97 +1828,117 @@ function App() {
           </a>
 
           <button
-            onClick={() => openWhatsApp()}
+            onClick={() =>
+              openWhatsApp()
+            }
             aria-label="WhatsApp"
           >
             <WhatsAppIcon size={25} />
           </button>
+
         </div>
 
         <p>
-          © {new Date().getFullYear()} SHRI INBAAS
-          SWEETS & BAKERY. All rights reserved.
+          © {new Date().getFullYear()}{" "}
+          SHRI INBAAS SWEETS &
+          BAKERY. All rights reserved.
         </p>
+
       </footer>
 
-      {/* FLOATING WHATSAPP */}
-      {/* <button
-        className="whatsapp-float"
-        onClick={() => openWhatsApp()}
-        aria-label="Chat with SHRI INBAAS SWEETS AND BAKERY on WhatsApp"
-      >
-        <WhatsAppIcon size={34} />
+      {/* ==================================================
+          FLOATING SOCIAL
+      ================================================== */}
 
-        <span className="whatsapp-tooltip">
-          Chat with us on WhatsApp
-        </span>
-      </button> */}
+      <div className="floating-socials">
 
-      {/* FLOATING SOCIAL BUTTONS */}
-<div className="floating-socials">
+        <a
+          className="instagram-float"
+          href={INSTAGRAM_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Visit Instagram"
+        >
+          <InstagramIcon size={27} />
 
-  {/* INSTAGRAM */}
-  <a
-    className="instagram-float"
-    href={INSTAGRAM_URL}
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Visit SHRI INBAAS Bakery Instagram"
-    title="Follow us on Instagram"
-  >
-    <InstagramIcon size={27} />
+          <span className="social-tooltip">
+            Follow us on Instagram
+          </span>
+        </a>
 
-    <span className="social-tooltip">
-      Follow us on Instagram
-    </span>
-  </a>
+        <button
+          className="whatsapp-float"
+          onClick={() =>
+            openWhatsApp()
+          }
+          aria-label="Chat on WhatsApp"
+        >
+          <WhatsAppIcon size={32} />
 
-  {/* WHATSAPP */}
-  <button
-    className="whatsapp-float"
-    onClick={() => openWhatsApp()}
-    aria-label="Chat with SHRI INBAAS SWEETS AND BAKERY on WhatsApp"
-    title="Chat with us on WhatsApp"
-  >
-    <WhatsAppIcon size={32} />
+          <span className="social-tooltip">
+            Chat with us on WhatsApp
+          </span>
+        </button>
 
-    <span className="social-tooltip">
-      Chat with us on WhatsApp
-    </span>
-  </button>
+      </div>
 
-</div>
+      {/* ==================================================
+          CART
+      ================================================== */}
 
-      {/* CART DRAWER */}
       {cartOpen && (
         <div
           className="cart-overlay"
-          onClick={() => setCartOpen(false)}
+          onClick={() =>
+            setCartOpen(false)
+          }
         >
+
           <aside
             className="cart-drawer"
-            onClick={(e) => e.stopPropagation()}
+            onClick={(e) =>
+              e.stopPropagation()
+            }
           >
+
             <div className="cart-header">
+
               <div>
-                <span>YOUR ORDER</span>
-                <h2>Your Bag</h2>
+                <span>
+                  YOUR ORDER
+                </span>
+
+                <h2>
+                  Your Bag
+                </h2>
               </div>
 
               <button
-                onClick={() => setCartOpen(false)}
+                onClick={() =>
+                  setCartOpen(false)
+                }
                 className="close-cart"
               >
                 ×
               </button>
+
             </div>
 
             {cart.length === 0 ? (
               <div className="empty-cart">
-                <div>🍰</div>
-                <h3>Your bag is empty</h3>
+
+                <div>
+                  🍰
+                </div>
+
+                <h3>
+                  Your bag is empty
+                </h3>
+
                 <p>
-                  Add your favourite cake to start your order.
+                  Add your favourite
+                  cake to start your
+                  order.
                 </p>
 
                 <button
@@ -1100,90 +1949,140 @@ function App() {
                 >
                   Explore Cakes
                 </button>
+
               </div>
             ) : (
               <>
                 <div className="cart-items">
-                  {cart.map((item) => (
-                    <div
-                      className="cart-item"
-                      key={item.name}
-                    >
-                      <img
-                        src={item.image}
-                        alt={item.name}
-                      />
 
-                      <div className="cart-item-content">
-                        <h3>{item.name}</h3>
+                  {cart.map(
+                    (item) => (
+                      <div
+                        className="cart-item"
+                        key={item.name}
+                      >
 
-                        <p>
-                          ₹{item.price} / KG
-                        </p>
-
-                        <div className="quantity-controls">
-                          <button
-                            onClick={() =>
-                              updateQuantity(
-                                item.name,
-                                -1
-                              )
-                            }
-                          >
-                            −
-                          </button>
-
-                          <span>{item.quantity}</span>
-
-                          <button
-                            onClick={() =>
-                              updateQuantity(
-                                item.name,
-                                1
-                              )
-                            }
-                          >
-                            +
-                          </button>
-                        </div>
-                      </div>
-
-                      <div className="cart-item-right">
-                        <strong>
-                          ₹{item.price * item.quantity}
-                        </strong>
-
-                        <button
-                          onClick={() =>
-                            removeFromCart(item.name)
+                        <img
+                          src={
+                            item.image
                           }
-                        >
-                          Remove
-                        </button>
+                          alt={
+                            item.name
+                          }
+                        />
+
+                        <div className="cart-item-content">
+
+                          <h3>
+                            {
+                              item.name
+                            }
+                          </h3>
+
+                          <p>
+                            ₹
+                            {
+                              item.price
+                            }{" "}
+                            / KG
+                          </p>
+
+                          <div className="quantity-controls">
+
+                            <button
+                              onClick={() =>
+                                updateQuantity(
+                                  item.name,
+                                  -1
+                                )
+                              }
+                            >
+                              −
+                            </button>
+
+                            <span>
+                              {
+                                item.quantity
+                              }
+                            </span>
+
+                            <button
+                              onClick={() =>
+                                updateQuantity(
+                                  item.name,
+                                  1
+                                )
+                              }
+                            >
+                              +
+                            </button>
+
+                          </div>
+
+                        </div>
+
+                        <div className="cart-item-right">
+
+                          <strong>
+                            ₹
+                            {
+                              item.price *
+                              item.quantity
+                            }
+                          </strong>
+
+                          <button
+                            onClick={() =>
+                              removeFromCart(
+                                item.name
+                              )
+                            }
+                          >
+                            Remove
+                          </button>
+
+                        </div>
+
                       </div>
-                    </div>
-                  ))}
+                    )
+                  )}
+
                 </div>
 
                 <div className="cart-footer">
+
                   <div className="cart-total">
-                    <span>Total</span>
-                    <strong>₹{cartTotal}</strong>
+
+                    <span>
+                      Total
+                    </span>
+
+                    <strong>
+                      ₹
+                      {cartTotal}
+                    </strong>
+
                   </div>
 
                   <button
                     className="checkout-button"
-                    onClick={orderCart}
+                    onClick={
+                      orderCart
+                    }
                   >
                     <WhatsAppIcon size={24} />
                     Order on WhatsApp
                   </button>
+
                 </div>
               </>
             )}
+
           </aside>
+
         </div>
       )}
+
     </div>
   );
 }
