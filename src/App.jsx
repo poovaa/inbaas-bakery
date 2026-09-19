@@ -777,23 +777,23 @@ Please confirm availability.`
               <InstagramIcon size={23} />
             </a>
 
-            <button
+            {/* <button
               className="cart-button"
               onClick={() =>
                 setCartOpen(true)
               }
               aria-label="Open cart"
             >
-              <span>
+              {/* <span>
                 Bag
-              </span>
+              </span> */}
 
               {cartCount > 0 && (
                 <b>
                   {cartCount}
                 </b>
               )}
-            </button>
+            {/* </button> */} 
 
             <button
               className={`menu-button ${
