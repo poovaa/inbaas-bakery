@@ -8,118 +8,37 @@ const INSTAGRAM_URL =
 
 const EMAIL = "Shriinbaas@gmail.com";
 
-const products = [
-  {
-    name: "Black Forest",
-    price: 700,
-    category: "Chocolate",
-    image: "/images/Blackforest.jpg",
-  },
-  {
-    name: "White Forest",
-    price: 700,
-    category: "Classic",
-    image: "/images/Whiteforest.jpg",
-  },
-  {
-    name: "Red Velvet",
-    price: 1000,
-    category: "Special",
-    image: "/images/RedVelvet.jpg",
-  },
-  {
-    name: "Butterscotch",
-    price: 850,
-    category: "Classic",
-    image: "/images/ButterScotch.jpg",
-  },
-  {
-    name: "Strawberry",
-    price: 800,
-    category: "Fruit",
-    image: "/images/Strawberry.jpg",
-  },
-  {
-    name: "Mango",
-    price: 800,
-    category: "Fruit",
-    image: "/images/Mango.jpg",
-  },
-  {
-    name: "Blueberry",
-    price: 750,
-    category: "Fruit",
-    image: "/images/Blueberry.jpg",
-  },
-  {
-    name: "Pineapple",
-    price: 750,
-    category: "Fruit",
-    image: "/images/Pineapple.jpg",
-  },
-  {
-    name: "Choco Truffle",
-    price: 900,
-    category: "Chocolate",
-    image: "/images/Chacotruffel.jpg",
-  },
-  {
-    name: "Chocolate Ice Cake",
-    price: 750,
-    category: "Chocolate",
-    image: "/images/Chocolateicecake.jpg",
-  },
-  {
-    name: "Choco Scotch",
-    price: 800,
-    category: "Chocolate",
-    image: "/images/ChacoScotch.jpg",
-  },
-  {
-    name: "Vanilla",
-    price: 600,
-    category: "Classic",
-    image: "/images/Venila.jpg",
-  },
-  {
-    name: "2-in-1",
-    price: 850,
-    category: "Special",
-    image: "/images/2 in one.jpg",
-  },
-  {
-    name: "Rasmalai",
-    price: 950,
-    category: "Special",
-    image: "/images/Rasamalai.jpg",
-  },
-  {
-    name: "3-in-1",
-    price: 900,
-    category: "Special",
-    image: "/images/3 in one.jpg",
-  },
-  {
-    name: "Rasmalai Scotch",
-    price: 1000,
-    category: "Special",
-    image: "/images/Rasamalaiscotch.jpg",
-  },
-  {
-    name: "Choco Oreo",
-    price: 950,
-    category: "Chocolate",
-    image: "/images/Chocooreo.jpg",
-  },
+/* =========================================================
+   ADMIN ACCESS
+   Change this code to whatever you like. Only someone who
+   knows it can log in and manage the cakes.
+========================================================= */
+const ADMIN_ACCESS_CODE = "INBAAS2025";
+
+const PRODUCTS_STORAGE_KEY = "shriInbaas_products_v1";
+const ADMIN_SESSION_KEY = "shriInbaas_admin_v1";
+
+const defaultProducts = [
+  { id: 1, name: "Black Forest", price: 700, category: "Chocolate", image: "/images/Blackforest.jpg" },
+  { id: 2, name: "White Forest", price: 700, category: "Classic", image: "/images/Whiteforest.jpg" },
+  { id: 3, name: "Red Velvet", price: 1000, category: "Special", image: "/images/RedVelvet.jpg" },
+  { id: 4, name: "Butterscotch", price: 850, category: "Classic", image: "/images/ButterScotch.jpg" },
+  { id: 5, name: "Strawberry", price: 800, category: "Fruit", image: "/images/Strawberry.jpg" },
+  { id: 6, name: "Mango", price: 800, category: "Fruit", image: "/images/Mango.jpg" },
+  { id: 7, name: "Blueberry", price: 750, category: "Fruit", image: "/images/Blueberry.jpg" },
+  { id: 8, name: "Pineapple", price: 750, category: "Fruit", image: "/images/Pineapple.jpg" },
+  { id: 9, name: "Choco Truffle", price: 900, category: "Chocolate", image: "/images/Chacotruffel.jpg" },
+  { id: 10, name: "Chocolate Ice Cake", price: 750, category: "Chocolate", image: "/images/Chocolateicecake.jpg" },
+  { id: 11, name: "Choco Scotch", price: 800, category: "Chocolate", image: "/images/ChacoScotch.jpg" },
+  { id: 12, name: "Vanilla", price: 600, category: "Classic", image: "/images/Venila.jpg" },
+  { id: 13, name: "2-in-1", price: 850, category: "Special", image: "/images/2 in one.jpg" },
+  { id: 14, name: "Rasmalai", price: 950, category: "Special", image: "/images/Rasamalai.jpg" },
+  { id: 15, name: "3-in-1", price: 900, category: "Special", image: "/images/3 in one.jpg" },
+  { id: 16, name: "Rasmalai Scotch", price: 1000, category: "Special", image: "/images/Rasamalaiscotch.jpg" },
+  { id: 17, name: "Choco Oreo", price: 950, category: "Chocolate", image: "/images/Chocooreo.jpg" },
 ];
 
-const categories = [
-  "All",
-  "Chocolate",
-  "Classic",
-  "Fruit",
-  "Special",
-];
+const categories = ["All", "Chocolate", "Classic", "Fruit", "Special"];
 
 /* =========================================================
    ICONS
@@ -127,64 +46,22 @@ const categories = [
 
 function InstagramIcon({ size = 28 }) {
   return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
-      <rect
-        x="3"
-        y="3"
-        width="18"
-        height="18"
-        rx="5"
-        stroke="currentColor"
-        strokeWidth="1.8"
-      />
-
-      <circle
-        cx="12"
-        cy="12"
-        r="4"
-        stroke="currentColor"
-        strokeWidth="1.8"
-      />
-
-      <circle
-        cx="17.4"
-        cy="6.7"
-        r="1.15"
-        fill="currentColor"
-      />
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" strokeWidth="1.8" />
+      <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="1.8" />
+      <circle cx="17.4" cy="6.7" r="1.15" fill="currentColor" />
     </svg>
   );
 }
 
 function WhatsAppIcon({ size = 32 }) {
   return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 32 32"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
-      <circle
-        cx="16"
-        cy="16"
-        r="16"
-        fill="#25D366"
-      />
-
+    <svg width={size} height={size} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="16" cy="16" r="16" fill="#25D366" />
       <path
         d="M16 6.2C10.59 6.2 6.2 10.59 6.2 16c0 1.73.45 3.35 1.24 4.76L6.2 25.8l5.18-1.22A9.75 9.75 0 0 0 16 25.8c5.41 0 9.8-4.39 9.8-9.8S21.41 6.2 16 6.2Z"
         fill="white"
       />
-
       <path
         d="M12.15 10.75c-.28 0-.58.03-.84.31-.29.31-1.1 1.08-1.1 2.63s1.13 3.05 1.3 3.26c.16.21 2.2 3.52 5.38 4.8 2.66 1.07 3.2.85 3.77.8.58-.05 1.87-.76 2.13-1.5.26-.74.26-1.38.18-1.51-.08-.13-.29-.21-.61-.37-.31-.16-1.87-.92-2.16-1.03-.29-.1-.5-.16-.71.16-.21.31-.81 1.03-.99 1.24-.18.21-.37.24-.68.08-.31-.16-1.32-.49-2.51-1.56-.93-.83-1.56-1.85-1.74-2.16-.18-.31-.02-.48.14-.64.14-.14.31-.37.47-.55.16-.18.21-.31.31-.52.1-.21.05-.39-.03-.55-.08-.16-.68-1.69-.93-2.31-.25-.6-.5-.52-.68-.53h-.58Z"
         fill="#25D366"
@@ -195,66 +72,25 @@ function WhatsAppIcon({ size = 32 }) {
 
 function MailIcon() {
   return (
-    <svg
-      width="22"
-      height="22"
-      viewBox="0 0 24 24"
-      fill="none"
-    >
-      <rect
-        x="3"
-        y="5"
-        width="18"
-        height="14"
-        rx="2"
-        stroke="currentColor"
-        strokeWidth="1.8"
-      />
-
-      <path
-        d="M4 7l8 6 8-6"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+      <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="1.8" />
+      <path d="M4 7l8 6 8-6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
 
 function LocationIcon() {
   return (
-    <svg
-      width="22"
-      height="22"
-      viewBox="0 0 24 24"
-      fill="none"
-    >
-      <path
-        d="M12 21s7-6.1 7-12a7 7 0 1 0-14 0c0 5.9 7 12 7 12Z"
-        stroke="currentColor"
-        strokeWidth="1.8"
-      />
-
-      <circle
-        cx="12"
-        cy="9"
-        r="2.3"
-        stroke="currentColor"
-        strokeWidth="1.8"
-      />
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+      <path d="M12 21s7-6.1 7-12a7 7 0 1 0-14 0c0 5.9 7 12 7 12Z" stroke="currentColor" strokeWidth="1.8" />
+      <circle cx="12" cy="9" r="2.3" stroke="currentColor" strokeWidth="1.8" />
     </svg>
   );
 }
 
 function PhoneIcon() {
   return (
-    <svg
-      width="22"
-      height="22"
-      viewBox="0 0 24 24"
-      fill="none"
-    >
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
       <path
         d="M6.8 3.8l2.3-.7c.7-.2 1.4.2 1.7.9l1 2.5c.2.5.1 1-.3 1.4L10 9.5c1 2.1 2.4 3.6 4.5 4.5l1.6-1.5c.4-.4 1-.5 1.4-.3l2.5 1c.7.3 1.1 1 .9 1.7l-.7 2.3c-.2.7-.8 1.1-1.5 1.1C10.5 18.3 5.7 13.5 5.7 7.3c0-.7.4-1.3 1.1-1.5Z"
         stroke="currentColor"
@@ -266,6 +102,39 @@ function PhoneIcon() {
   );
 }
 
+function EditIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+      <path
+        d="M4 17.25V20h2.75L17.81 8.94l-2.75-2.75L4 17.25ZM19.71 6.04a1 1 0 0 0 0-1.42l-2.33-2.33a1 1 0 0 0-1.42 0l-1.83 1.83 3.75 3.75 1.83-1.83Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
+function TrashIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+      <path
+        d="M6 7h12M9.5 7V5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v2M7.5 7l.7 12a1 1 0 0 0 1 .95h5.6a1 1 0 0 0 1-.95l.7-12"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function PlusIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+      <path d="M12 5v14M5 12h14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  );
+}
+
 /* =========================================================
    CERTIFICATE ICON
 ========================================================= */
@@ -273,33 +142,221 @@ function PhoneIcon() {
 function CertificateIcon({ type }) {
   const [imgFailed, setImgFailed] = useState(false);
 
-  const src =
-    type === "fssai"
-      ? "/images/fssai-logo.jpg"
-      : "/images/foscos-logo.jpg";
-
-  const alt =
-    type === "fssai"
-      ? "FSSAI logo"
-      : "FOSCOS logo";
+  const src = type === "fssai" ? "/images/fssai-logo.jpg" : "/images/foscos-logo.jpg";
+  const alt = type === "fssai" ? "FSSAI logo" : "FOSCOS logo";
 
   if (imgFailed) {
-    return (
-      <div
-        className={`certificate-icon ${type} icon-fallback`}
-      >
-        {type === "fssai" ? "✓" : "▣"}
-      </div>
-    );
+    return <div className={`certificate-icon ${type} icon-fallback`}>{type === "fssai" ? "✓" : "▣"}</div>;
   }
 
   return (
     <div className={`certificate-icon ${type}`}>
-      <img
-        src={src}
-        alt={alt}
-        onError={() => setImgFailed(true)}
-      />
+      <img src={src} alt={alt} onError={() => setImgFailed(true)} />
+    </div>
+  );
+}
+
+/* =========================================================
+   PREVIEW (photo view) MODAL
+========================================================= */
+
+function PreviewModal({ product, onClose, onOrder }) {
+  if (!product) return null;
+
+  return (
+    <div className="lightbox-overlay" onClick={onClose}>
+      <div className="lightbox-box" onClick={(e) => e.stopPropagation()}>
+        <button className="lightbox-close" onClick={onClose} aria-label="Close preview">
+          ×
+        </button>
+
+        <div className="lightbox-image">
+          <img src={product.image} alt={product.name} />
+        </div>
+
+        <div className="lightbox-info">
+          <span className="product-category">{product.category}</span>
+          <h3>{product.name}</h3>
+          <strong>₹{product.price} / KG</strong>
+
+          {/* <button className="lightbox-order-btn" onClick={() => onOrder(product)}>
+            <WhatsAppIcon size={20} />
+            Enquire on WhatsApp
+          </button> */}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* =========================================================
+   ADMIN LOGIN MODAL
+========================================================= */
+
+function AdminLoginModal({ open, onClose, onLogin }) {
+  const [code, setCode] = useState("");
+  const [error, setError] = useState("");
+
+  if (!open) return null;
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (code.trim() === ADMIN_ACCESS_CODE) {
+      setError("");
+      setCode("");
+      onLogin();
+    } else {
+      setError("Incorrect access code. Please try again.");
+    }
+  };
+
+  const handleClose = () => {
+    setCode("");
+    setError("");
+    onClose();
+  };
+
+  return (
+    <div className="admin-overlay" onClick={handleClose}>
+      <form className="admin-box" onClick={(e) => e.stopPropagation()} onSubmit={handleSubmit}>
+        <button type="button" className="lightbox-close" onClick={handleClose} aria-label="Close">
+          ×
+        </button>
+
+        <h3>Admin Login</h3>
+        <p>Enter the access code to manage cakes.</p>
+
+        <input
+          type="password"
+          placeholder="Access code"
+          value={code}
+          onChange={(e) => setCode(e.target.value)}
+          autoFocus
+        />
+
+        {error && <span className="admin-error">{error}</span>}
+
+        <button type="submit" className="primary-button admin-submit">
+          Login
+        </button>
+      </form>
+    </div>
+  );
+}
+
+/* =========================================================
+   ADD / EDIT CAKE FORM MODAL
+========================================================= */
+
+function ProductFormModal({ product, onSave, onClose }) {
+  const isNew = product === "new";
+  const source = isNew ? null : product;
+
+  const [name, setName] = useState(source?.name || "");
+  const [price, setPrice] = useState(source?.price ?? "");
+  const [category, setCategory] = useState(source?.category || categories[1]);
+  const [imageMode, setImageMode] = useState("url");
+  const [imageValue, setImageValue] = useState(source?.image || "");
+
+  useEffect(() => {
+    setName(source?.name || "");
+    setPrice(source?.price ?? "");
+    setCategory(source?.category || categories[1]);
+    setImageValue(source?.image || "");
+    setImageMode(source?.image?.startsWith("data:") ? "upload" : "url");
+  }, [product]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  if (!product) return null;
+
+  const handleFile = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = () => setImageValue(reader.result);
+    reader.readAsDataURL(file);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!name.trim() || !price || !imageValue) {
+      alert("Please fill in the cake name, price, and image.");
+      return;
+    }
+
+    onSave({
+      id: isNew ? Date.now() + Math.floor(Math.random() * 1000) : source.id,
+      name: name.trim(),
+      price: Number(price),
+      category,
+      image: imageValue,
+    });
+  };
+
+  return (
+    <div className="admin-overlay" onClick={onClose}>
+      <form className="admin-box product-form-box" onClick={(e) => e.stopPropagation()} onSubmit={handleSubmit}>
+        <button type="button" className="lightbox-close" onClick={onClose} aria-label="Close">
+          ×
+        </button>
+
+        <h3>{isNew ? "Add New Cake" : "Edit Cake"}</h3>
+
+        <label>Cake name</label>
+        <input value={name} onChange={(e) => setName(e.target.value)} placeholder="e.g. Black Forest" />
+
+        <label>Price (₹ per KG)</label>
+        <input type="number" min="0" value={price} onChange={(e) => setPrice(e.target.value)} placeholder="e.g. 700" />
+
+        <label>Category</label>
+        <select value={category} onChange={(e) => setCategory(e.target.value)}>
+          {categories
+            .filter((c) => c !== "All")
+            .map((c) => (
+              <option key={c} value={c}>
+                {c}
+              </option>
+            ))}
+        </select>
+
+        <label>Image</label>
+        <div className="image-mode-toggle">
+          <button type="button" className={imageMode === "url" ? "active" : ""} onClick={() => setImageMode("url")}>
+            Image URL
+          </button>
+          <button type="button" className={imageMode === "upload" ? "active" : ""} onClick={() => setImageMode("upload")}>
+            Upload photo
+          </button>
+        </div>
+
+        {imageMode === "url" ? (
+          <input
+            value={imageValue.startsWith("data:") ? "" : imageValue}
+            onChange={(e) => setImageValue(e.target.value)}
+            placeholder="/images/NewCake.jpg or https://..."
+          />
+        ) : (
+          <input type="file" accept="image/*" onChange={handleFile} />
+        )}
+
+        <p className="form-hint">
+          Tip: for the smallest, fastest site, add the photo file to your project's <code>public/images</code> folder
+          and use "Image URL" with a path like <code>/images/NewCake.jpg</code>. "Upload photo" works instantly but
+          stores the image in the browser's local storage.
+        </p>
+
+        {imageValue && (
+          <div className="image-preview-box">
+            <img src={imageValue} alt="Preview" />
+          </div>
+        )}
+
+        <button type="submit" className="primary-button admin-submit">
+          Save Cake
+        </button>
+      </form>
     </div>
   );
 }
@@ -309,36 +366,91 @@ function CertificateIcon({ type }) {
 ========================================================= */
 
 function App() {
-  const [activeCategory, setActiveCategory] =
-    useState("All");
-
+  const [activeCategory, setActiveCategory] = useState("All");
   const [search, setSearch] = useState("");
-
   const [cart, setCart] = useState([]);
+  const [cartOpen, setCartOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [candleBlown, setCandleBlown] = useState(false);
 
-  const [cartOpen, setCartOpen] =
-    useState(false);
+  /* -------- product catalogue (persisted) -------- */
+  const [products, setProducts] = useState(() => {
+    try {
+      const saved = localStorage.getItem(PRODUCTS_STORAGE_KEY);
+      if (saved) return JSON.parse(saved);
+    } catch (e) {
+      // ignore parse errors, fall back to defaults
+    }
+    return defaultProducts;
+  });
 
-  const [menuOpen, setMenuOpen] =
-    useState(false);
+  /* -------- admin state -------- */
+  const [isAdmin, setIsAdmin] = useState(() => {
+    try {
+      return localStorage.getItem(ADMIN_SESSION_KEY) === "true";
+    } catch (e) {
+      return false;
+    }
+  });
 
-  const [candleBlown, setCandleBlown] =
-    useState(false);
+  const [loginOpen, setLoginOpen] = useState(false);
+  const [editingProduct, setEditingProduct] = useState(null); // null | "new" | product object
+  const [previewProduct, setPreviewProduct] = useState(null);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(PRODUCTS_STORAGE_KEY, JSON.stringify(products));
+    } catch (e) {
+      // storage full or unavailable - ignore
+    }
+  }, [products]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(ADMIN_SESSION_KEY, isAdmin ? "true" : "false");
+    } catch (e) {
+      // ignore
+    }
+  }, [isAdmin]);
 
   /* =======================================================
      WHATSAPP
   ======================================================= */
 
   const openWhatsApp = (message) => {
-    const text =
-      message ||
-      "Hello SHRI INBAAS SWEETS AND BAKERY, I would like to make an enquiry.";
-
-    const url =
-      `https://wa.me/${WHATSAPP_NUMBER}?text=` +
-      encodeURIComponent(text);
-
+    const text = message || "Hello SHRI INBAAS SWEETS AND BAKERY, I would like to make an enquiry.";
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=` + encodeURIComponent(text);
     window.open(url, "_blank");
+  };
+
+  /* =======================================================
+     ADMIN ACTIONS
+  ======================================================= */
+
+  const handleAdminLogout = () => {
+    setIsAdmin(false);
+    setEditingProduct(null);
+  };
+
+  const handleSaveProduct = (productData) => {
+    setProducts((current) => {
+      const exists = current.some((p) => p.id === productData.id);
+
+      if (exists) {
+        return current.map((p) => (p.id === productData.id ? productData : p));
+      }
+
+      return [...current, productData];
+    });
+
+    setEditingProduct(null);
+  };
+
+  const handleDeleteProduct = (id) => {
+    if (!window.confirm("Delete this cake? This cannot be undone.")) return;
+
+    setProducts((current) => current.filter((p) => p.id !== id));
+    setCart((current) => current.filter((item) => item.id !== id));
   };
 
   /* =======================================================
@@ -347,21 +459,11 @@ function App() {
 
   const filteredProducts = useMemo(() => {
     return products.filter((product) => {
-      const categoryMatch =
-        activeCategory === "All" ||
-        product.category === activeCategory;
-
-      const searchMatch =
-        product.name
-          .toLowerCase()
-          .includes(search.toLowerCase());
-
-      return (
-        categoryMatch &&
-        searchMatch
-      );
+      const categoryMatch = activeCategory === "All" || product.category === activeCategory;
+      const searchMatch = product.name.toLowerCase().includes(search.toLowerCase());
+      return categoryMatch && searchMatch;
     });
-  }, [activeCategory, search]);
+  }, [products, activeCategory, search]);
 
   /* =======================================================
      CART
@@ -369,99 +471,40 @@ function App() {
 
   const addToCart = (product) => {
     setCart((current) => {
-      const existing = current.find(
-        (item) => item.name === product.name
-      );
+      const existing = current.find((item) => item.id === product.id);
 
       if (existing) {
-        return current.map((item) =>
-          item.name === product.name
-            ? {
-                ...item,
-                quantity:
-                  item.quantity + 1,
-              }
-            : item
-        );
+        return current.map((item) => (item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item));
       }
 
-      return [
-        ...current,
-        {
-          ...product,
-          quantity: 1,
-        },
-      ];
+      return [...current, { ...product, quantity: 1 }];
     });
 
     setCartOpen(true);
   };
 
-  const updateQuantity = (
-    name,
-    change
-  ) => {
+  const updateQuantity = (id, change) => {
     setCart((current) =>
       current
-        .map((item) =>
-          item.name === name
-            ? {
-                ...item,
-                quantity:
-                  item.quantity + change,
-              }
-            : item
-        )
-        .filter(
-          (item) => item.quantity > 0
-        )
+        .map((item) => (item.id === id ? { ...item, quantity: item.quantity + change } : item))
+        .filter((item) => item.quantity > 0)
     );
   };
 
-  const removeFromCart = (name) => {
-    setCart((current) =>
-      current.filter(
-        (item) => item.name !== name
-      )
-    );
+  const removeFromCart = (id) => {
+    setCart((current) => current.filter((item) => item.id !== id));
   };
 
-  const cartTotal = cart.reduce(
-    (total, item) =>
-      total +
-      item.price * item.quantity,
-    0
-  );
-
-  const cartCount = cart.reduce(
-    (total, item) =>
-      total + item.quantity,
-    0
-  );
+  const cartTotal = cart.reduce((total, item) => total + item.price * item.quantity, 0);
+  const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
 
   const orderCart = () => {
     if (!cart.length) return;
 
-    const items = cart
-      .map(
-        (item) =>
-          `${item.name} x ${item.quantity} - ₹${
-            item.price *
-            item.quantity
-          }`
-      )
-      .join("\n");
+    const items = cart.map((item) => `${item.name} x ${item.quantity} - ₹${item.price * item.quantity}`).join("\n");
 
     openWhatsApp(
-      `Hello SHRI INBAAS SWEETS AND BAKERY,
-
-I would like to order:
-
-${items}
-
-Total: ₹${cartTotal}
-
-Please confirm availability.`
+      `Hello SHRI INBAAS SWEETS AND BAKERY,\n\nI would like to order:\n\n${items}\n\nTotal: ₹${cartTotal}\n\nPlease confirm availability.`
     );
   };
 
@@ -470,24 +513,13 @@ Please confirm availability.`
   ======================================================= */
 
   const scrollTo = (id) => {
-    const element =
-      document.getElementById(id);
-
+    const element = document.getElementById(id);
     if (!element) return;
 
     const navbarHeight = 75;
+    const top = element.getBoundingClientRect().top + window.scrollY - navbarHeight;
 
-    const top =
-      element.getBoundingClientRect()
-        .top +
-      window.scrollY -
-      navbarHeight;
-
-    window.scrollTo({
-      top,
-      behavior: "smooth",
-    });
-
+    window.scrollTo({ top, behavior: "smooth" });
     setMenuOpen(false);
   };
 
@@ -496,69 +528,46 @@ Please confirm availability.`
   ======================================================= */
 
   const toggleCandle = () => {
-    setCandleBlown(
-      (current) => !current
-    );
+    setCandleBlown((current) => !current);
   };
 
   /* =======================================================
-     CART BODY LOCK
+     BODY LOCK (cart / admin modals)
   ======================================================= */
 
   useEffect(() => {
-    document.body.style.overflow =
-      cartOpen ? "hidden" : "";
+    const locked = cartOpen || loginOpen || Boolean(editingProduct) || Boolean(previewProduct);
+    document.body.style.overflow = locked ? "hidden" : "";
 
     return () => {
-      document.body.style.overflow =
-        "";
+      document.body.style.overflow = "";
     };
-  }, [cartOpen]);
+  }, [cartOpen, loginOpen, editingProduct, previewProduct]);
 
   /* =======================================================
      CINEMATIC SCROLL REVEAL
   ======================================================= */
 
   useEffect(() => {
-    const elements =
-      document.querySelectorAll(
-        ".reveal"
-      );
-
+    const elements = document.querySelectorAll(".reveal");
     if (!elements.length) return;
 
-    const observer =
-      new IntersectionObserver(
-        (entries) => {
-          entries.forEach(
-            (entry) => {
-              if (
-                entry.isIntersecting
-              ) {
-                entry.target.classList.add(
-                  "is-visible"
-                );
-              } else {
-                entry.target.classList.remove(
-                  "is-visible"
-                );
-              }
-            }
-          );
-        },
-        {
-          threshold: 0.12,
-          rootMargin:
-            "0px 0px -8% 0px",
-        }
-      );
-
-    elements.forEach((element) =>
-      observer.observe(element)
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+          } else {
+            entry.target.classList.remove("is-visible");
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
     );
 
-    return () =>
-      observer.disconnect();
+    elements.forEach((element) => observer.observe(element));
+
+    return () => observer.disconnect();
   }, [filteredProducts]);
 
   /* =======================================================
@@ -570,392 +579,168 @@ Please confirm availability.`
 
     const handleScroll = () => {
       if (ticking) return;
-
       ticking = true;
 
       requestAnimationFrame(() => {
-        const scrollY =
-          window.scrollY;
+        const scrollY = window.scrollY;
 
-        const hero =
-          document.querySelector(
-            ".hero"
-          );
+        const hero = document.querySelector(".hero");
+        const heroVisual = document.querySelector(".hero-visual");
+        const storyVideo = document.querySelector(".story-image video");
+        const heroContent = document.querySelector(".hero-content");
 
-        const heroVisual =
-          document.querySelector(
-            ".hero-visual"
-          );
+        if (hero && heroVisual && heroContent) {
+          const heroHeight = hero.offsetHeight;
+          const progress = Math.min(scrollY / (heroHeight * 0.9), 1);
 
-        const storyVideo =
-          document.querySelector(
-            ".story-image video"
-          );
-
-        const heroContent =
-          document.querySelector(
-            ".hero-content"
-          );
-
-        if (
-          hero &&
-          heroVisual &&
-          heroContent
-        ) {
-          const heroHeight =
-            hero.offsetHeight;
-
-          const progress = Math.min(
-            scrollY /
-              (heroHeight * 0.9),
-            1
-          );
-
-          heroVisual.style.setProperty(
-            "--hero-parallax",
-            `${progress * 55}px`
-          );
-
-          heroVisual.style.setProperty(
-            "--hero-scale",
-            `${1 + progress * 0.07}`
-          );
-
-          heroContent.style.setProperty(
-            "--hero-text-y",
-            `${progress * -35}px`
-          );
-
-          heroContent.style.setProperty(
-            "--hero-opacity",
-            `${1 - progress * 0.75}`
-          );
+          heroVisual.style.setProperty("--hero-parallax", `${progress * 55}px`);
+          heroVisual.style.setProperty("--hero-scale", `${1 + progress * 0.07}`);
+          heroContent.style.setProperty("--hero-text-y", `${progress * -35}px`);
+          heroContent.style.setProperty("--hero-opacity", `${1 - progress * 0.75}`);
         }
 
         if (storyVideo) {
-          const rect =
-            storyVideo.parentElement.getBoundingClientRect();
+          const rect = storyVideo.parentElement.getBoundingClientRect();
+          const viewportCenter = window.innerHeight / 2;
+          const distance = (rect.top + rect.height / 2 - viewportCenter) / window.innerHeight;
+          const movement = Math.max(-35, Math.min(35, distance * -35));
 
-          const viewportCenter =
-            window.innerHeight / 2;
-
-          const distance =
-            (rect.top +
-              rect.height / 2 -
-              viewportCenter) /
-            window.innerHeight;
-
-          const movement =
-            Math.max(
-              -35,
-              Math.min(35, distance * -35)
-            );
-
-          storyVideo.style.transform =
-            `scale(1.08) translateY(${movement}px)`;
+          storyVideo.style.transform = `scale(1.08) translateY(${movement}px)`;
         }
 
         ticking = false;
       });
     };
 
-    window.addEventListener(
-      "scroll",
-      handleScroll,
-      {
-        passive: true,
-      }
-    );
-
+    window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
 
-    return () =>
-      window.removeEventListener(
-        "scroll",
-        handleScroll
-      );
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <div className="app">
-
-      {/* ==================================================
-          NAVBAR
-      ================================================== */}
-
+      {/* ================================================== NAVBAR ================================================== */}
       <header className="navbar">
         <div className="nav-inner">
-
-          <button
-            className="brand"
-            onClick={() =>
-              scrollTo("home")
-            }
-          >
-            <span className="brand-small">
-              EST. 2025
-            </span>
-
-            <span className="brand-name">
-              SHRI INBAAS
-            </span>
-
-            <span className="brand-sub">
-              SWEETS & BAKERY
-            </span>
+          <button className="brand" onClick={() => scrollTo("home")}>
+            <span className="brand-small">EST. 2025</span>
+            <span className="brand-name">SHRI INBAAS</span>
+            <span className="brand-sub">SWEETS & BAKERY</span>
           </button>
 
-          <nav
-            className={
-              menuOpen
-                ? "nav-links open"
-                : "nav-links"
-            }
-          >
-            <button
-              onClick={() =>
-                scrollTo("home")
-              }
-            >
-              Home
-            </button>
+          <nav className={menuOpen ? "nav-links open" : "nav-links"}>
+            <button onClick={() => scrollTo("home")}>Home</button>
+            <button onClick={() => scrollTo("cakes")}>Cakes</button>
+            <button onClick={() => scrollTo("story")}>Our Story</button>
+            <button onClick={() => scrollTo("certifications")}>Certifications</button>
+            <button onClick={() => scrollTo("contact")}>Contact</button>
 
-            <button
-              onClick={() =>
-                scrollTo("cakes")
-              }
-            >
-              Cakes
-            </button>
-
-            <button
-              onClick={() =>
-                scrollTo("story")
-              }
-            >
-              Our Story
-            </button>
-
-            <button
-              onClick={() =>
-                scrollTo(
-                  "certifications"
-                )
-              }
-            >
-              Certifications
-            </button>
-
-            <button
-              onClick={() =>
-                scrollTo("contact")
-              }
-            >
-              Contact
-            </button>
-
-            <a
-              className="nav-instagram mobile-instagram"
-              href={INSTAGRAM_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a className="nav-instagram mobile-instagram" href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer">
               <InstagramIcon size={20} />
               Instagram
             </a>
           </nav>
 
           <div className="nav-actions">
-
-            <a
-              className="instagram-button"
-              href={INSTAGRAM_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Visit Instagram"
-            >
+            <a className="instagram-button" href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" aria-label="Visit Instagram">
               <InstagramIcon size={23} />
             </a>
 
-            {/* <button
-              className="cart-button"
-              onClick={() =>
-                setCartOpen(true)
-              }
-              aria-label="Open cart"
-            >
-              {/* <span>
-                Bag
-              </span> */}
-
-              {cartCount > 0 && (
-                <b>
-                  {cartCount}
-                </b>
-              )}
-            {/* </button> */} 
+            {isAdmin && (
+              <button className="admin-nav-badge" onClick={handleAdminLogout}>
+                Admin • Logout
+              </button>
+            )}
 
             <button
-              className={`menu-button ${
-                menuOpen
-                  ? "open"
-                  : ""
-              }`}
-              onClick={() =>
-                setMenuOpen(
-                  !menuOpen
-                )
-              }
-              aria-label={
-                menuOpen
-                  ? "Close menu"
-                  : "Open menu"
-              }
-              aria-expanded={
-                menuOpen
-              }
+              className={`menu-button ${menuOpen ? "open" : ""}`}
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={menuOpen}
             >
               <span></span>
               <span></span>
               <span></span>
             </button>
-
           </div>
         </div>
       </header>
 
       <main>
-
-        {/* ==================================================
-            HERO
-        ================================================== */}
-
-        <section
-          className="hero"
-          id="home"
-        >
+        {/* ================================================== HERO ================================================== */}
+        <section className="hero" id="home">
           <div className="hero-background"></div>
 
           <div className="hero-content">
-
-            <p className="section-label hero-label reveal">
-              ARTISAN BAKERY • KAMUTHI
-            </p>
+            <p className="section-label hero-label reveal">ARTISAN BAKERY • KAMUTHI</p>
 
             <h1 className="hero-title reveal reveal-delay-1">
               Baked with
-              <span>
-                heart.
-              </span>
+              <span>heart.</span>
             </h1>
 
             <p className="hero-description reveal reveal-delay-2">
-              Freshly crafted cakes,
-              sweets and celebration
-              treats made with care
-              for every special moment.
+              Freshly crafted cakes, sweets and celebration treats made with care for every special moment.
             </p>
 
             <div className="hero-buttons reveal reveal-delay-3">
-
-              <button
-                className="primary-button"
-                onClick={() =>
-                  scrollTo("cakes")
-                }
-              >
+              <button className="primary-button" onClick={() => scrollTo("cakes")}>
                 Explore Cakes
                 <span>↗</span>
               </button>
 
-              <button
-                className="secondary-button"
-                onClick={() =>
-                  openWhatsApp()
-                }
-              >
+              <button className="secondary-button" onClick={() => openWhatsApp()}>
                 Order on WhatsApp
               </button>
-
             </div>
 
             <div className="hero-social reveal reveal-delay-4">
-              <span>
-                Follow our bakery
-              </span>
+              <span>Follow our bakery</span>
 
-              <a
-                href={INSTAGRAM_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer">
                 <InstagramIcon size={18} />
                 @shri_inbaas_bakery
               </a>
             </div>
-
           </div>
 
           <div className="hero-visual">
-
             <div className="bakery-display">
-
               <div className="cake-glow"></div>
 
               <div className="cake-animation">
-
                 <div className="cake-top">
-
                   <span className="cherry"></span>
                   <span className="cherry"></span>
                   <span className="cherry"></span>
 
                   <button
-                    className={`candle ${
-                      candleBlown
-                        ? "blown"
-                        : ""
-                    }`}
-                    onClick={
-                      toggleCandle
-                    }
-                    aria-label={
-                      candleBlown
-                        ? "Relight candle"
-                        : "Blow out candle"
-                    }
+                    className={`candle ${candleBlown ? "blown" : ""}`}
+                    onClick={toggleCandle}
+                    aria-label={candleBlown ? "Relight candle" : "Blow out candle"}
                   >
                     <span className="candle-stick"></span>
                     <span className="flame"></span>
                     <span className="smoke"></span>
                   </button>
-
                 </div>
 
                 <div className="cake-cream"></div>
 
                 <div className="cake-body">
-
                   <span className="cream-drip drip-1"></span>
                   <span className="cream-drip drip-2"></span>
                   <span className="cream-drip drip-3"></span>
-
                 </div>
 
                 <div className="cake-bottom"></div>
-
               </div>
 
               <div className="cake-plate"></div>
 
-              <div className="floating-word word-one">
-                FRESH
-              </div>
-
-              <div className="floating-word word-two">
-                SWEET
-              </div>
-
+              <div className="floating-word word-one">FRESH</div>
+              <div className="floating-word word-two">SWEET</div>
             </div>
           </div>
 
@@ -965,236 +750,141 @@ Please confirm availability.`
           </div>
         </section>
 
-        {/* ==================================================
-            INTRO
-        ================================================== */}
-
+        {/* ================================================== INTRO ================================================== */}
         <section className="intro-section">
-
           <div className="intro-container">
-
-            <p className="section-label reveal">
-              THE SHRI INBAAS WAY
-            </p>
+            <p className="section-label reveal">THE SHRI INBAAS WAY</p>
 
             <h2 className="reveal reveal-delay-1">
               Sweet moments,
               <br />
-              <em>
-                made memorable.
-              </em>
+              <em>made memorable.</em>
             </h2>
 
             <p className="reveal reveal-delay-2">
-              From classic favourites
-              to rich celebration cakes,
-              every creation is prepared
-              to bring something special
+              From classic favourites to rich celebration cakes, every creation is prepared to bring something special
               to your table.
             </p>
-
           </div>
-
         </section>
 
-        {/* ==================================================
-            CAKES
-        ================================================== */}
-
-        <section
-          className="menu-section"
-          id="cakes"
-        >
+        {/* ================================================== CAKES ================================================== */}
+        <section className="menu-section" id="cakes">
           <div className="section-container">
-
             <div className="section-heading">
-
               <div>
-                <p className="section-label reveal">
-                  OUR COLLECTION
-                </p>
+                <p className="section-label reveal">OUR COLLECTION</p>
 
                 <h2 className="reveal reveal-delay-1">
                   Cakes for
                   <br />
-                  <em>
-                    every occasion.
-                  </em>
+                  <em>every occasion.</em>
                 </h2>
               </div>
 
-              <div className="menu-search reveal reveal-delay-2">
-                <input
-                  type="text"
-                  placeholder="Search cakes..."
-                  value={search}
-                  onChange={(e) =>
-                    setSearch(
-                      e.target.value
-                    )
-                  }
-                />
-              </div>
+              <div className="menu-heading-actions reveal reveal-delay-2">
+                {isAdmin && (
+                  <button className="add-cake-button" onClick={() => setEditingProduct("new")}>
+                    <PlusIcon /> Add New Cake
+                  </button>
+                )}
 
+                <div className="menu-search">
+                  <input
+                    type="text"
+                    placeholder="Search cakes..."
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                  />
+                </div>
+              </div>
             </div>
 
             <div className="category-tabs reveal">
-              {categories.map(
-                (category) => (
-                  <button
-                    key={category}
-                    className={
-                      activeCategory ===
-                      category
-                        ? "active"
-                        : ""
-                    }
-                    onClick={() =>
-                      setActiveCategory(
-                        category
-                      )
-                    }
-                  >
-                    {category}
-                  </button>
-                )
-              )}
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  className={activeCategory === category ? "active" : ""}
+                  onClick={() => setActiveCategory(category)}
+                >
+                  {category}
+                </button>
+              ))}
             </div>
 
             <div className="product-grid">
+              {filteredProducts.map((product, index) => (
+                <article className="product-card reveal" style={{ "--delay": `${(index % 4) * 80}ms` }} key={product.id}>
+                  <div className="product-image" onClick={() => setPreviewProduct(product)}>
+                    <img src={product.image} alt={product.name} loading="lazy" />
+                    <span className="product-category">{product.category}</span>
+                    <div className="product-image-shade"></div>
+                    <span className="preview-hint">View photo</span>
+                  </div>
 
-              {filteredProducts.map(
-                (product, index) => (
-                  <article
-                    className="product-card reveal"
-                    style={{
-                      "--delay": `${
-                        (index % 4) *
-                        80
-                      }ms`,
-                    }}
-                    key={product.name}
-                  >
-                    <div className="product-image">
-
-                      <img
-                        src={
-                          product.image
-                        }
-                        alt={
-                          product.name
-                        }
-                        loading="lazy"
-                      />
-
-                      <span className="product-category">
-                        {
-                          product.category
-                        }
-                      </span>
-
-                      <div className="product-image-shade"></div>
-
+                  <div className="product-info">
+                    <div>
+                      <h3>{product.name}</h3>
+                      <p>1 KG</p>
                     </div>
 
-                    <div className="product-info">
+                    <strong>₹{product.price}</strong>
+                  </div>
 
-                      <div>
-                        <h3>
-                          {
-                            product.name
-                          }
-                        </h3>
+                  {isAdmin && (
+                    <div className="admin-card-actions">
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setEditingProduct(product);
+                        }}
+                        aria-label="Edit cake"
+                      >
+                        <EditIcon />
+                      </button>
 
-                        <p>
-                          1 KG
-                        </p>
-                      </div>
-
-                      <strong>
-                        ₹
-                        {
-                          product.price
-                        }
-                      </strong>
-
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleDeleteProduct(product.id);
+                        }}
+                        aria-label="Delete cake"
+                      >
+                        <TrashIcon />
+                      </button>
                     </div>
-{/* 
-                    <button
-                      className="add-button"
-                      onClick={() =>
-                        addToCart(
-                          product
-                        )
-                      }
-                    >
-                      Add to Order
-                      <span>
-                        +
-                      </span>
-                    </button> */}
-
-                  </article>
-                )
-              )}
-
+                  )}
+                </article>
+              ))}
             </div>
 
-            {filteredProducts.length ===
-              0 && (
-              <div className="no-products">
-                No cakes found.
-              </div>
-            )}
-
+            {filteredProducts.length === 0 && <div className="no-products">No cakes found.</div>}
           </div>
         </section>
 
-        {/* ==================================================
-            SPECIALITY
-        ================================================== */}
-
+        {/* ================================================== SPECIALITY ================================================== */}
         <section className="signature-section">
-
           <div className="signature-copy">
-
-            <p className="section-label reveal">
-              OUR SPECIALITY
-            </p>
+            <p className="section-label reveal">OUR SPECIALITY</p>
 
             <h2 className="reveal reveal-delay-1">
               Crafted for
               <br />
-              <em>
-                your celebrations.
-              </em>
+              <em>your celebrations.</em>
             </h2>
 
             <p className="reveal reveal-delay-2">
-              Whether it is a birthday,
-              wedding, anniversary,
-              family gathering or simply
-              a sweet craving, we create
-              cakes that make the moment
-              feel special.
+              Whether it is a birthday, wedding, anniversary, family gathering or simply a sweet craving, we create
+              cakes that make the moment feel special.
             </p>
 
-            <button
-              className="gold-button reveal reveal-delay-3"
-              onClick={() =>
-                scrollTo("contact")
-              }
-            >
+            <button className="gold-button reveal reveal-delay-3" onClick={() => scrollTo("contact")}>
               Talk to us
-              <span>
-                →
-              </span>
+              <span>→</span>
             </button>
-
           </div>
 
           <div className="signature-art">
-
             <div className="gold-ring"></div>
 
             <div className="art-cake">
@@ -1202,744 +892,357 @@ Please confirm availability.`
               <div></div>
               <div></div>
             </div>
-
           </div>
-
         </section>
 
-        {/* ==================================================
-            STORY
-        ================================================== */}
-
-        <section
-          className="story-section"
-          id="story"
-        >
-
+        {/* ================================================== STORY ================================================== */}
+        <section className="story-section" id="story">
           <div className="story-container">
-
             <div className="story-image reveal">
-
-              <video
-                autoPlay
-                muted
-                loop
-                playsInline
-              >
-                <source
-                  src="/videos/cakemaking.mp4"
-                  type="video/mp4"
-                />
+              <video autoPlay muted loop playsInline>
+                <source src="/videos/cakemaking.mp4" type="video/mp4" />
               </video>
 
-              <div className="story-image-overlay">
-                SHRI INBAAS
-              </div>
-
-              <div className="story-image-number">
-                01
-              </div>
-
+              <div className="story-image-overlay">SHRI INBAAS</div>
+              <div className="story-image-number">01</div>
             </div>
 
             <div className="story-copy">
-
-              <p className="section-label reveal">
-                OUR STORY
-              </p>
+              <p className="section-label reveal">OUR STORY</p>
 
               <h2 className="reveal reveal-delay-1">
                 A local bakery
                 <br />
-                <em>
-                  with a big heart.
-                </em>
+                <em>with a big heart.</em>
               </h2>
 
               <p className="reveal reveal-delay-2">
-                At SHRI INBAAS
-                SWEETS & BAKERY,
-                we believe great food
-                brings people together.
+                At SHRI INBAAS SWEETS & BAKERY, we believe great food brings people together.
               </p>
 
               <p className="reveal reveal-delay-3">
-                Our focus is simple —
-                fresh products, beautiful
-                presentation and a warm
-                experience for every
-                customer.
+                Our focus is simple — fresh products, beautiful presentation and a warm experience for every customer.
               </p>
 
-              <button
-                className="text-button reveal reveal-delay-4"
-                onClick={() =>
-                  scrollTo("contact")
-                }
-              >
+              <button className="text-button reveal reveal-delay-4" onClick={() => scrollTo("contact")}>
                 Visit us
-                <span>
-                  →
-                </span>
+                <span>→</span>
               </button>
-
             </div>
-
           </div>
-
         </section>
 
-        {/* ==================================================
-            CERTIFICATIONS
-        ================================================== */}
-
-        <section
-          className="certifications-section"
-          id="certifications"
-        >
-
+        {/* ================================================== CERTIFICATIONS ================================================== */}
+        <section className="certifications-section" id="certifications">
           <div className="section-container">
-
             <div className="certificate-heading">
-
               <div>
-                <p className="section-label reveal">
-                  TRUST & QUALITY
-                </p>
+                <p className="section-label reveal">TRUST & QUALITY</p>
 
                 <h2 className="reveal reveal-delay-1">
                   Certified for
                   <br />
-                  <em>
-                    your confidence.
-                  </em>
+                  <em>your confidence.</em>
                 </h2>
               </div>
 
               <p className="certificate-intro reveal reveal-delay-2">
-                Our licensing information
-                is displayed transparently
-                for our customers.
+                Our licensing information is displayed transparently for our customers.
               </p>
-
             </div>
 
             <div className="certificate-marquee">
-
               <div className="certificate-track">
-
                 <div className="certificate-card">
-
-                  <CertificateIcon
-                    type="fssai"
-                  />
+                  <CertificateIcon type="fssai" />
 
                   <div className="certificate-content">
-
-                    <span className="certificate-label">
-                      FSSAI STATE LICENSE
-                    </span>
-
-                    <h3>
-                      SHRI INBAAS SWEETS
-                      AND BAKERY
-                    </h3>
-
+                    <span className="certificate-label">FSSAI STATE LICENSE</span>
+                    <h3>SHRI INBAAS SWEETS AND BAKERY</h3>
                     <p>
-                      FSSAI License No:
-                      <strong>
-                        {" "}
-                        12425017000216
-                      </strong>
+                      FSSAI License No: <strong> 12425017000216</strong>
                     </p>
 
                     <div className="certificate-details">
-
                       <div>
-                        <span>
-                          Issued
-                        </span>
-
-                        <strong>
-                          27 Nov 2025
-                        </strong>
+                        <span>Issued</span>
+                        <strong>27 Nov 2025</strong>
                       </div>
-
                       <div>
-                        <span>
-                          Valid Until
-                        </span>
-
-                        <strong>
-                          26 Nov 2026
-                        </strong>
+                        <span>Valid Until</span>
+                        <strong>26 Nov 2026</strong>
                       </div>
-
                       <div>
-                        <span>
-                          Type
-                        </span>
-
-                        <strong>
-                          State License
-                        </strong>
+                        <span>Type</span>
+                        <strong>State License</strong>
                       </div>
-
                     </div>
-
                   </div>
                 </div>
 
                 <div className="certificate-card">
-
-                  <CertificateIcon
-                    type="foscos"
-                  />
+                  <CertificateIcon type="foscos" />
 
                   <div className="certificate-content">
-
-                    <span className="certificate-label">
-                      FOSCOS LICENSE RECEIPT
-                    </span>
-
-                    <h3>
-                      Official Registration
-                      Record
-                    </h3>
-
+                    <span className="certificate-label">FOSCOS LICENSE RECEIPT</span>
+                    <h3>Official Registration Record</h3>
                     <p>
-                      Reference No:
-                      <strong>
-                        {" "}
-                        20251127107994117
-                      </strong>
+                      Reference No: <strong> 20251127107994117</strong>
                     </p>
 
                     <div className="certificate-details">
-
                       <div>
-                        <span>
-                          License Type
-                        </span>
-
-                        <strong>
-                          State License
-                        </strong>
+                        <span>License Type</span>
+                        <strong>State License</strong>
                       </div>
-
                       <div>
-                        <span>
-                          Fee Paid
-                        </span>
-
-                        <strong>
-                          ₹2,000
-                        </strong>
+                        <span>Fee Paid</span>
+                        <strong>₹2,000</strong>
                       </div>
-
                       <div>
-                        <span>
-                          Status
-                        </span>
-
-                        <strong>
-                          Registered
-                        </strong>
+                        <span>Status</span>
+                        <strong>Registered</strong>
                       </div>
-
                     </div>
-
                   </div>
                 </div>
 
-                {/* DUPLICATES */}
-
+                {/* DUPLICATES for seamless marquee loop */}
                 <div className="certificate-card">
-
-                  <CertificateIcon
-                    type="fssai"
-                  />
+                  <CertificateIcon type="fssai" />
 
                   <div className="certificate-content">
-
-                    <span className="certificate-label">
-                      FSSAI STATE LICENSE
-                    </span>
-
-                    <h3>
-                      SHRI INBAAS SWEETS
-                      AND BAKERY
-                    </h3>
-
+                    <span className="certificate-label">FSSAI STATE LICENSE</span>
+                    <h3>SHRI INBAAS SWEETS AND BAKERY</h3>
                     <p>
-                      FSSAI License No:
-                      <strong>
-                        {" "}
-                        12425017000216
-                      </strong>
+                      FSSAI License No: <strong> 12425017000216</strong>
                     </p>
 
                     <div className="certificate-details">
-
                       <div>
-                        <span>
-                          Issued
-                        </span>
-
-                        <strong>
-                          27 Nov 2025
-                        </strong>
+                        <span>Issued</span>
+                        <strong>27 Nov 2025</strong>
                       </div>
-
                       <div>
-                        <span>
-                          Valid Until
-                        </span>
-
-                        <strong>
-                          26 Nov 2026
-                        </strong>
+                        <span>Valid Until</span>
+                        <strong>26 Nov 2026</strong>
                       </div>
-
                       <div>
-                        <span>
-                          Type
-                        </span>
-
-                        <strong>
-                          State License
-                        </strong>
+                        <span>Type</span>
+                        <strong>State License</strong>
                       </div>
-
                     </div>
-
                   </div>
                 </div>
 
                 <div className="certificate-card">
-
-                  <CertificateIcon
-                    type="foscos"
-                  />
+                  <CertificateIcon type="foscos" />
 
                   <div className="certificate-content">
-
-                    <span className="certificate-label">
-                      FOSCOS LICENSE RECEIPT
-                    </span>
-
-                    <h3>
-                      Official Registration
-                      Record
-                    </h3>
-
+                    <span className="certificate-label">FOSCOS LICENSE RECEIPT</span>
+                    <h3>Official Registration Record</h3>
                     <p>
-                      Reference No:
-                      <strong>
-                        {" "}
-                        20251127107994117
-                      </strong>
+                      Reference No: <strong> 20251127107994117</strong>
                     </p>
 
                     <div className="certificate-details">
-
                       <div>
-                        <span>
-                          License Type
-                        </span>
-
-                        <strong>
-                          State License
-                        </strong>
+                        <span>License Type</span>
+                        <strong>State License</strong>
                       </div>
-
                       <div>
-                        <span>
-                          Fee Paid
-                        </span>
-
-                        <strong>
-                          ₹2,000
-                        </strong>
+                        <span>Fee Paid</span>
+                        <strong>₹2,000</strong>
                       </div>
-
                       <div>
-                        <span>
-                          Status
-                        </span>
-
-                        <strong>
-                          Registered
-                        </strong>
+                        <span>Status</span>
+                        <strong>Registered</strong>
                       </div>
-
                     </div>
-
                   </div>
                 </div>
-
               </div>
-
             </div>
-
           </div>
-
         </section>
 
-        {/* ==================================================
-            ORDER CTA
-        ================================================== */}
-
+        {/* ================================================== ORDER CTA ================================================== */}
         <section className="order-section">
-
           <div>
-
-            <p className="section-label reveal">
-              READY TO ORDER?
-            </p>
+            <p className="section-label reveal">READY TO ORDER?</p>
 
             <h2 className="reveal reveal-delay-1">
               Let's make
               <br />
-              <em>
-                something sweet.
-              </em>
+              <em>something sweet.</em>
             </h2>
 
-            <p className="reveal reveal-delay-2">
-              Tell us what you are looking
-              for and we will help you
-              with your order.
-            </p>
-
+            <p className="reveal reveal-delay-2">Tell us what you are looking for and we will help you with your order.</p>
           </div>
 
-          <button
-            className="order-whatsapp-button reveal reveal-delay-3"
-            onClick={() =>
-              openWhatsApp()
-            }
-          >
+          <button className="order-whatsapp-button reveal reveal-delay-3" onClick={() => openWhatsApp()}>
             <WhatsAppIcon size={28} />
-
             <span>
-              <small>
-                QUICK ORDER
-              </small>
-
+              <small>QUICK ORDER</small>
               WhatsApp Us
             </span>
           </button>
-
         </section>
 
-        {/* ==================================================
-            CONTACT
-        ================================================== */}
-
-        <section
-          className="contact-section"
-          id="contact"
-        >
-
+        {/* ================================================== CONTACT ================================================== */}
+        <section className="contact-section" id="contact">
           <div className="contact-container">
-
             <div className="contact-intro">
-
-              <p className="section-label reveal">
-                COME SAY HELLO
-              </p>
+              <p className="section-label reveal">COME SAY HELLO</p>
 
               <h2 className="reveal reveal-delay-1">
                 We'd love
-                <span>
-                  to hear from you.
-                </span>
+                <span>to hear from you.</span>
               </h2>
 
               <p className="reveal reveal-delay-2">
-                Visit our bakery or contact
-                us directly for orders,
-                enquiries and celebrations.
+                Visit our bakery or contact us directly for orders, enquiries and celebrations.
               </p>
 
-              <button
-                className="contact-whatsapp-btn reveal reveal-delay-3"
-                onClick={() =>
-                  openWhatsApp()
-                }
-              >
+              <button className="contact-whatsapp-btn reveal reveal-delay-3" onClick={() => openWhatsApp()}>
                 <WhatsAppIcon size={24} />
                 Chat on WhatsApp
               </button>
-
             </div>
 
             <div className="contact-card">
-
               <div className="contact-item reveal">
-
                 <div className="contact-item-icon">
                   <LocationIcon />
                 </div>
 
                 <div>
-                  <span>
-                    VISIT US
-                  </span>
-
-                  <h3>
-                    Our Bakery
-                  </h3>
-
+                  <span>VISIT US</span>
+                  <h3>Our Bakery</h3>
                   <p>
-                    No.264/40B1,
-                    Soodiyoor Road,
+                    No.264/40B1, Soodiyoor Road,
                     <br />
                     Abiramam Bus Stand,
                     <br />
-                    Kamuthi,
-                    Ramanathapuram,
+                    Kamuthi, Ramanathapuram,
                     <br />
                     Tamil Nadu – 623601
                   </p>
                 </div>
-
               </div>
 
               <div className="contact-divider"></div>
 
               <div className="contact-item reveal">
-
                 <div className="contact-item-icon">
                   <PhoneIcon />
                 </div>
 
                 <div>
-                  <span>
-                    CALL / WHATSAPP
-                  </span>
+                  <span>CALL / WHATSAPP</span>
+                  <h3>+91 98943 49627</h3>
 
-                  <h3>
-                    +91 98943 49627
-                  </h3>
-
-                  <button
-                    className="contact-link-button"
-                    onClick={() =>
-                      openWhatsApp()
-                    }
-                  >
+                  <button className="contact-link-button" onClick={() => openWhatsApp()}>
                     Start a conversation →
                   </button>
                 </div>
-
               </div>
 
               <div className="contact-divider"></div>
 
               <div className="contact-item reveal">
-
                 <div className="contact-item-icon">
                   <MailIcon />
                 </div>
 
                 <div>
-                  <span>
-                    EMAIL
-                  </span>
+                  <span>EMAIL</span>
+                  <h3>{EMAIL}</h3>
 
-                  <h3>
-                    {EMAIL}
-                  </h3>
-
-                  <a
-                    className="contact-link-button"
-                    href={`mailto:${EMAIL}`}
-                  >
+                  <a className="contact-link-button" href={`mailto:${EMAIL}`}>
                     Send us an email →
                   </a>
                 </div>
-
               </div>
 
               <div className="contact-divider"></div>
 
               <div className="contact-item reveal">
-
                 <div className="contact-item-icon instagram-contact-icon">
                   <InstagramIcon size={23} />
                 </div>
 
                 <div>
-                  <span>
-                    FOLLOW US
-                  </span>
+                  <span>FOLLOW US</span>
+                  <h3>@shri_inbaas_bakery</h3>
 
-                  <h3>
-                    @shri_inbaas_bakery
-                  </h3>
-
-                  <a
-                    className="contact-link-button"
-                    href={INSTAGRAM_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <a className="contact-link-button" href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer">
                     Visit our Instagram →
                   </a>
                 </div>
-
               </div>
-
             </div>
-
           </div>
-
         </section>
-
       </main>
 
-      {/* ==================================================
-          FOOTER
-      ================================================== */}
-
+      {/* ================================================== FOOTER ================================================== */}
       <footer className="footer">
-
         <div className="footer-brand">
-          <strong>
-            SHRI INBAAS
-          </strong>
-
-          <span>
-            SWEETS & BAKERY
-          </span>
+          <strong>SHRI INBAAS</strong>
+          <span>SWEETS & BAKERY</span>
         </div>
 
         <div className="footer-social">
-
-          <a
-            href={INSTAGRAM_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Instagram"
-          >
+          <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
             <InstagramIcon size={22} />
           </a>
 
-          <button
-            onClick={() =>
-              openWhatsApp()
-            }
-            aria-label="WhatsApp"
-          >
+          <button onClick={() => openWhatsApp()} aria-label="WhatsApp">
             <WhatsAppIcon size={25} />
           </button>
-
         </div>
 
-        <p>
-          © {new Date().getFullYear()}{" "}
-          SHRI INBAAS SWEETS &
-          BAKERY. All rights reserved.
-        </p>
+        <p>© {new Date().getFullYear()} SHRI INBAAS SWEETS & BAKERY. All rights reserved.</p>
 
+        <button className="footer-admin-link" onClick={() => (isAdmin ? handleAdminLogout() : setLoginOpen(true))}>
+          {isAdmin ? "Admin: Logout" : "Admin"}
+        </button>
       </footer>
 
-      {/* ==================================================
-          FLOATING SOCIAL
-      ================================================== */}
-
+      {/* ================================================== FLOATING SOCIAL ================================================== */}
       <div className="floating-socials">
-
-        <a
-          className="instagram-float"
-          href={INSTAGRAM_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Visit Instagram"
-        >
+        <a className="instagram-float" href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" aria-label="Visit Instagram">
           <InstagramIcon size={27} />
-
-          <span className="social-tooltip">
-            Follow us on Instagram
-          </span>
+          <span className="social-tooltip">Follow us on Instagram</span>
         </a>
 
-        <button
-          className="whatsapp-float"
-          onClick={() =>
-            openWhatsApp()
-          }
-          aria-label="Chat on WhatsApp"
-        >
+        <button className="whatsapp-float" onClick={() => openWhatsApp()} aria-label="Chat on WhatsApp">
           <WhatsAppIcon size={32} />
-
-          <span className="social-tooltip">
-            Chat with us on WhatsApp
-          </span>
+          <span className="social-tooltip">Chat with us on WhatsApp</span>
         </button>
-
       </div>
 
-      {/* ==================================================
-          CART
-      ================================================== */}
-
+      {/* ================================================== CART ================================================== */}
       {cartOpen && (
-        <div
-          className="cart-overlay"
-          onClick={() =>
-            setCartOpen(false)
-          }
-        >
-
-          <aside
-            className="cart-drawer"
-            onClick={(e) =>
-              e.stopPropagation()
-            }
-          >
-
+        <div className="cart-overlay" onClick={() => setCartOpen(false)}>
+          <aside className="cart-drawer" onClick={(e) => e.stopPropagation()}>
             <div className="cart-header">
-
               <div>
-                <span>
-                  YOUR ORDER
-                </span>
-
-                <h2>
-                  Your Bag
-                </h2>
+                <span>YOUR ORDER</span>
+                <h2>Your Bag</h2>
               </div>
 
-              <button
-                onClick={() =>
-                  setCartOpen(false)
-                }
-                className="close-cart"
-              >
+              <button onClick={() => setCartOpen(false)} className="close-cart">
                 ×
               </button>
-
             </div>
 
             {cart.length === 0 ? (
               <div className="empty-cart">
-
-                <div>
-                  🍰
-                </div>
-
-                <h3>
-                  Your bag is empty
-                </h3>
-
-                <p>
-                  Add your favourite
-                  cake to start your
-                  order.
-                </p>
+                <div>🍰</div>
+                <h3>Your bag is empty</h3>
+                <p>Add your favourite cake to start your order.</p>
 
                 <button
                   onClick={() => {
@@ -1949,140 +1252,65 @@ Please confirm availability.`
                 >
                   Explore Cakes
                 </button>
-
               </div>
             ) : (
               <>
                 <div className="cart-items">
+                  {cart.map((item) => (
+                    <div className="cart-item" key={item.id}>
+                      <img src={item.image} alt={item.name} />
 
-                  {cart.map(
-                    (item) => (
-                      <div
-                        className="cart-item"
-                        key={item.name}
-                      >
+                      <div className="cart-item-content">
+                        <h3>{item.name}</h3>
+                        <p>₹{item.price} / KG</p>
 
-                        <img
-                          src={
-                            item.image
-                          }
-                          alt={
-                            item.name
-                          }
-                        />
-
-                        <div className="cart-item-content">
-
-                          <h3>
-                            {
-                              item.name
-                            }
-                          </h3>
-
-                          <p>
-                            ₹
-                            {
-                              item.price
-                            }{" "}
-                            / KG
-                          </p>
-
-                          <div className="quantity-controls">
-
-                            <button
-                              onClick={() =>
-                                updateQuantity(
-                                  item.name,
-                                  -1
-                                )
-                              }
-                            >
-                              −
-                            </button>
-
-                            <span>
-                              {
-                                item.quantity
-                              }
-                            </span>
-
-                            <button
-                              onClick={() =>
-                                updateQuantity(
-                                  item.name,
-                                  1
-                                )
-                              }
-                            >
-                              +
-                            </button>
-
-                          </div>
-
+                        <div className="quantity-controls">
+                          <button onClick={() => updateQuantity(item.id, -1)}>−</button>
+                          <span>{item.quantity}</span>
+                          <button onClick={() => updateQuantity(item.id, 1)}>+</button>
                         </div>
-
-                        <div className="cart-item-right">
-
-                          <strong>
-                            ₹
-                            {
-                              item.price *
-                              item.quantity
-                            }
-                          </strong>
-
-                          <button
-                            onClick={() =>
-                              removeFromCart(
-                                item.name
-                              )
-                            }
-                          >
-                            Remove
-                          </button>
-
-                        </div>
-
                       </div>
-                    )
-                  )}
 
+                      <div className="cart-item-right">
+                        <strong>₹{item.price * item.quantity}</strong>
+                        <button onClick={() => removeFromCart(item.id)}>Remove</button>
+                      </div>
+                    </div>
+                  ))}
                 </div>
 
                 <div className="cart-footer">
-
                   <div className="cart-total">
-
-                    <span>
-                      Total
-                    </span>
-
-                    <strong>
-                      ₹
-                      {cartTotal}
-                    </strong>
-
+                    <span>Total</span>
+                    <strong>₹{cartTotal}</strong>
                   </div>
 
-                  <button
-                    className="checkout-button"
-                    onClick={
-                      orderCart
-                    }
-                  >
+                  <button className="checkout-button" onClick={orderCart}>
                     <WhatsAppIcon size={24} />
                     Order on WhatsApp
                   </button>
-
                 </div>
               </>
             )}
-
           </aside>
-
         </div>
       )}
 
+      {/* ================================================== ADMIN + PREVIEW MODALS ================================================== */}
+      <AdminLoginModal open={loginOpen} onClose={() => setLoginOpen(false)} onLogin={() => { setIsAdmin(true); setLoginOpen(false); }} />
+
+      <ProductFormModal product={editingProduct} onSave={handleSaveProduct} onClose={() => setEditingProduct(null)} />
+
+      <PreviewModal
+        product={previewProduct}
+        onClose={() => setPreviewProduct(null)}
+        onOrder={(p) => {
+          openWhatsApp(
+            `Hello SHRI INBAAS SWEETS AND BAKERY, I'm interested in the ${p.name} cake (₹${p.price}/KG). Please share more details.`
+          );
+          setPreviewProduct(null);
+        }}
+      />
     </div>
   );
 }
