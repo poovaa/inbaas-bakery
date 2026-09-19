@@ -1119,7 +1119,7 @@ Please confirm availability.`
                       </strong>
 
                     </div>
-
+{/* 
                     <button
                       className="add-button"
                       onClick={() =>
@@ -1132,7 +1132,7 @@ Please confirm availability.`
                       <span>
                         +
                       </span>
-                    </button>
+                    </button> */}
 
                   </article>
                 )
