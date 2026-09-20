@@ -179,10 +179,10 @@ function PreviewModal({ product, onClose, onOrder }) {
           <h3>{product.name}</h3>
           <strong>₹{product.price} / KG</strong>
 
-          {/* <button className="lightbox-order-btn" onClick={() => onOrder(product)}>
+          <button className="lightbox-order-btn" onClick={() => onOrder(product)}>
             <WhatsAppIcon size={20} />
             Enquire on WhatsApp
-          </button> */}
+          </button>
         </div>
       </div>
     </div>
@@ -624,9 +624,11 @@ function App() {
       <header className="navbar">
         <div className="nav-inner">
           <button className="brand" onClick={() => scrollTo("home")}>
-            <span className="brand-small">EST. 2025</span>
-            <span className="brand-name">SHRI INBAAS</span>
-            <span className="brand-sub">SWEETS & BAKERY</span>
+            <img src="/images/logo.png" alt="Shri Inbaas Sweets & Bakery" className="brand-logo" />
+            <span className="brand-text">
+              <span className="brand-name">SHRI INBAAS</span>
+              <span className="brand-sub">SWEETS & BAKERY</span>
+            </span>
           </button>
 
           <nav className={menuOpen ? "nav-links open" : "nav-links"}>
@@ -744,10 +746,10 @@ function App() {
             </div>
           </div>
 
-          <div className="scroll-indicator">
+          {/* <div className="scroll-indicator">
             <span>SCROLL</span>
             <i></i>
-          </div>
+          </div> */}
         </section>
 
         {/* ================================================== INTRO ================================================== */}
@@ -1189,8 +1191,7 @@ function App() {
       {/* ================================================== FOOTER ================================================== */}
       <footer className="footer">
         <div className="footer-brand">
-          <strong>SHRI INBAAS</strong>
-          <span>SWEETS & BAKERY</span>
+          <img src="/images/logo.png" alt="Shri Inbaas Sweets & Bakery" className="footer-logo" />
         </div>
 
         <div className="footer-social">
