@@ -552,18 +552,30 @@ function App() {
     const elements = document.querySelectorAll(".reveal");
     if (!elements.length) return;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-          } else {
-            entry.target.classList.remove("is-visible");
-          }
-        });
-      },
-      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
-    );
+    // const observer = new IntersectionObserver(
+    //   (entries) => {
+    //     entries.forEach((entry) => {
+    //       if (entry.isIntersecting) {
+    //         entry.target.classList.add("is-visible");
+    //       } else {
+    //         entry.target.classList.remove("is-visible");
+    //       }
+    //     });
+    //   },
+    //   { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+    // );
+
+        const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target); // stop watching once it's shown
+        }
+      });
+    },
+    { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+  );
 
     elements.forEach((element) => observer.observe(element));
 
