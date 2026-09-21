@@ -179,10 +179,10 @@ function PreviewModal({ product, onClose, onOrder }) {
           <h3>{product.name}</h3>
           <strong>₹{product.price} / KG</strong>
 
-          <button className="lightbox-order-btn" onClick={() => onOrder(product)}>
+          {/* <button className="lightbox-order-btn" onClick={() => onOrder(product)}>
             <WhatsAppIcon size={20} />
             Enquire on WhatsApp
-          </button>
+          </button> */}
         </div>
       </div>
     </div>
