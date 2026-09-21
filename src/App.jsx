@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import "./App.css";
 
-const WHATSAPP_NUMBER = "919894349627";
+const WHATSAPP_NUMBER = "919363024672";
 
 const INSTAGRAM_URL =
   "https://www.instagram.com/shri_inbaas_bakery?stkn=bHNpYnhnYjd0Z3dr";
