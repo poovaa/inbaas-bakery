@@ -4162,18 +4162,18 @@ h2 em {
       65vh;
   }
 
-  /* .intro-container h2,
+  .intro-container h2,
   .story-copy h2 {
     font-size:
       3.4rem;
-  } */
-   .intro-container h2,
+  }
+   /* .intro-container h2,
 .story-copy h2,
 .order-section h2 {
   font-size: 3.2rem;
   line-height: 1.05;
   padding-top: 6px;
-}
+} */
 
   /* MENU */
 
