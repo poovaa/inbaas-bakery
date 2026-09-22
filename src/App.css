@@ -5582,3 +5582,12 @@ h2 em {
     height: 48px;
   }
 }
+@media (max-width: 600px) {
+  h2 {
+    color: #3a2024 !important;
+  }
+
+  h2 em {
+    color: #c87586 !important;
+  }
+}
