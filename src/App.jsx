@@ -881,11 +881,11 @@ function App() {
           <div className="signature-copy">
             <p className="section-label reveal">OUR SPECIALITY</p>
 
-            <h2 className="reveal reveal-delay-1">
+            <h3 className="reveal reveal-delay-1">
               Crafted for
               <br />
               <em>your celebrations.</em>
-            </h2>
+            </h3>
 
             <p className="reveal reveal-delay-2">
               Whether it is a birthday, wedding, anniversary, family gathering or simply a sweet craving, we create
