@@ -4323,11 +4323,41 @@ h2 em {
 
   /* CERTIFICATION */
 
-  .certifications-section {
+  /* .certifications-section {
     padding:
       90px
       0;
+  } */
+
+   /* CERTIFICATION - MOBILE */
+@media (max-width: 600px) {
+  .certifications-section {
+    padding: 90px 20px;
+    text-align: center;
   }
+
+  .certificate-heading {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .certificate-heading > div {
+    width: 100%;
+    text-align: center;
+  }
+
+  .certificate-heading h2 {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .certificate-heading .section-label {
+    text-align: center;
+  }
+}
 
   .certificate-card {
     flex-basis:
